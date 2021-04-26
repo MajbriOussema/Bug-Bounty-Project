@@ -1,0 +1,13 @@
+<div>
+    <form #confirm="ngForm" (submit)="confirmDelete(confirm)">
+        <h2 class="sr-only">Confirm Dialog</h2>
+        <div class="illustration">
+            <h1 style="color: #ffffff;">Please confirm you password</h1>
+        </div>
+        <div class="form-group"><input required ngModel #password="ngModel" type="password" class="form-control" name="password" placeholder="Password" /></div>
+        <div *ngIf="password.errors && (password.dirty || password.touched)" style="color:#e19c05" class="ml-2 mb-3">
+            Password is required
+        </div>
+        <div class="form-group"><button class="btn btn-primary btn-block" [disabled]="confirm.invalid"  type="submit" style="background: #9fef00;">Delete</button></div>
+    </form>
+</div>

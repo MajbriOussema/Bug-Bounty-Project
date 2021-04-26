@@ -1,0 +1,26 @@
+<section class="login-clean">
+    <form #login="ngForm">
+        <h2 class="sr-only">Contact Us</h2>
+        <div class="illustration">
+            <h1 style="color: #ffffff;">Contact Us</h1>
+        </div>
+        <div class="form-group"><input required ngModel  type="text" class="form-control" name="full-name" placeholder="Full Name" /></div>
+        <!--
+        <div *ngIf="full-name.errors && (full-name.dirty || full-name.touched)" style="color:#e19c05" class="ml-2 mb-3">
+            Full Name is required
+        </div>
+        -->
+        <div class="form-group"><input required ngModel type="email" class="form-control" name="email" placeholder="Email" /></div>
+        <!--
+        <div *ngIf="email.errors && (email.dirty || email.touched)" style="color:#e19c05" class="ml-2 mb-3">
+            Email is required
+        </div>
+        -->
+        <div class="form-group"><textarea required ngModel  class="form-control" name="desc" rows="4" cols="50" placeholder="Description"></textarea></div>
+        <!--<div *ngIf="desc.errors && (desc.dirty || desc.touched)" style="color:#e19c05" class="ml-2 mb-3">
+            Description is required
+        </div>
+        -->
+        <div class="form-group"><button class="btn btn-primary btn-block" [disabled]="login.invalid" type="submit" style="background: #9fef00;">Send Request</button></div>
+    </form>
+</section>

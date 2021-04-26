@@ -1,0 +1,31 @@
+<div class="card-body">
+    <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+        <table class="table my-0" id="dataTable" matSort (matSortChange)="sortData($event)">
+            <thead>
+                <tr>
+                    <th mat-sort-header="name">Program</th>
+                    <th mat-sort-header="reports">Reports</th>
+                    <th mat-sort-header="bounties_min">Bounties Minimum</th>
+                    <th mat-sort-header="bounties_avg">Bounties Average</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let program of sortedData">
+                    <td>{{program.name}}</td>
+                    <td>{{program.reports}}</td>
+                    <td>{{program.bounties_min}}$</td>
+                    <td>{{program.bounties_avg}}$</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td><strong>Program</strong></td>
+                    <td><strong>Reports</strong></td>
+                    <td><strong>Bounties Minimum</strong></td>
+                    <td><strong>Bounties Average</strong></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+

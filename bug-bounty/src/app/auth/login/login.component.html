@@ -1,0 +1,17 @@
+<section class="login-clean">
+    <form #login="ngForm" (submit)="doLogin(login)">
+        <h2 class="sr-only">Login Form</h2>
+        <div class="illustration">
+            <h1 style="color: #ffffff;">Log In</h1>
+        </div>
+        <div class="form-group"><input required ngModel #email="ngModel" type="email" class="form-control" name="email" placeholder="Email" /></div>
+        <div *ngIf="email.errors && (email.dirty || email.touched)" style="color:#e19c05" class="ml-2 mb-3">
+            Email is required
+        </div>
+        <div class="form-group"><input required ngModel #password="ngModel" type="password" class="form-control" name="password" placeholder="Password" /></div>
+        <div *ngIf="password.errors && (password.dirty || password.touched)" style="color:#e19c05" class="ml-2 mb-3">
+            Password is required
+        </div>
+        <div class="form-group"><button class="btn btn-primary btn-block" [disabled]="login.invalid" type="submit" style="background: #9fef00;">Log In</button></div><a class="forgot" href="#">Forgot your email or password?</a>
+    </form>
+</section>

@@ -1,0 +1,105 @@
+<div id="container">
+  <div id="headers" class="my-flex">
+    <mat-tab-group>
+      <mat-tab class="header" label="Active Programs">
+        <table class="table ">
+          <thead>
+            <tr>
+              <th scope="col">Program Name</th>
+              <th scope="col">Date of Creation</th>
+              <th scope="col">Modified on</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let prog of programs;">
+              <td>Date of Creation</td>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>
+                <button type="button" class="btn btn-primary" (click)="viewProgram()"><i class="far fa-eye" id="ic"></i></button>
+                <button type="button" class="btn btn-success" (click)="openDialog()"><i class="fas fa-edit" id="ic"></i></button>
+                <button type="button" class="btn btn-danger" (click)="openDialog()"><i class="far fa-trash-alt" id="ic"></i></button>
+              </td>
+            </tr>
+  
+          </tbody>
+        </table>
+      </mat-tab>
+      <mat-tab label="Add a new Program">
+        <form #prog="ngForm" (ngSubmit)="addProgram(prog)">
+            <div  class="form-row">
+                <div class="col">
+                    <div class="form-group"><label style="color: #ffffff" for="program name"><strong>Program Name</strong></label>
+                      <input required [(ngModel)] = "model.prog_name" #prog_name="ngModel" class="form-control" type="text" id="prog_name" placeholder="Program Name" name="prog_name"></div>
+                    </div>
+            </div>   
+            <div *ngIf="prog_name.errors && (prog_name.dirty || prog_name.touched)" style="color:#e19c05" class="ml-2 mb-3">
+              Program name is required
+          </div>
+            <div class="form-row">    
+                <div class="col">
+                    <div class="form-group"><label style="color: #ffffff" for="policy"><strong>Policy</strong></label>
+                      <textarea required #policy="ngModel" style="resize:none;" [(ngModel)] = "model.policy" class="form-control" id="policy" placeholder="Policy" name="policy" rows="5"></textarea>
+                    </div>
+                </div>
+            </div>    
+            <div *ngIf="policy.errors && (policy.dirty || policy.touched)" style="color:#e19c05" class="ml-2 mb-3">
+              Policy is required
+            </div>
+            <div class="form-row">    
+                <div class="col">
+                    <div class="form-group"><label style="color: #ffffff" for="inscope"><strong>In Scope</strong></label>
+                      <div *ngFor="let f of inScopes;let i = index">
+                        <input [(ngModel)]="f.name" style="height:42px;width:400px;padding-right:0" type="text" placeholder="" name="inScope[{{i}}]">
+                        <button type="button" class="btn btn-danger btn-sm" style="height:42px;margin-left: 0;width:30px" *ngIf="inScopes.length>1" (click)="deleteInScope(f)"><i class="fas fa-trash-alt"></i></button>
+                      </div>
+                      <button type="button" class="btn btn-info btn-sm" style="height:42px;margin-top:10px" (click)="addInScopeField()">Add more In Scopes</button>
+
+                    </div>
+                </div>
+            </div> 
+            <div class="form-row">    
+              <div class="col">
+                  <div class="form-group"><label style="color: #ffffff" for="outofscope"><strong>Out Of Scope</strong></label>
+                    <div *ngFor="let f of outOfScopes;let i = index">
+                      <input [(ngModel)]="f.name" style="height:42px;width:400px;padding-right:0" type="text" placeholder="" name="outOfScope[{{i}}]">
+                      <button type="button" class="btn btn-danger btn-sm" style="height:42px;margin-left: 0;width:30px" *ngIf="outOfScopes.length>1" (click)="deleteOutOfScope(f)"><i class="fas fa-trash-alt"></i></button>
+                    </div>
+                    <button type="button" class="btn btn-info btn-sm" style="height:42px;margin-top:10px" (click)="addOutOfScopeField()">Add more Out Of Scopes</button>
+
+                  </div>
+              </div>
+          </div> 
+            
+            <div class="form-group"><button style="height:42px;margin-top:10px" class="btn btn-primary btn-sm form-control" [disabled]="prog.invalid" type="submit">Submit Program</button></div>
+        </form>
+      </mat-tab>
+      <mat-tab label="Recent Activities">
+        <table class="table ">
+            <thead>
+              <tr>
+                <th scope="col">Program Name</th>
+                <th scope="col">Date of Creation</th>
+                <th scope="col">Description</th>
+                <th scope="col">Status</th>
+                <th scope="col">Payment</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let activ of activities;">
+                <td>{{activ.prog_name}}</td>
+                <td>{{activ.create_date}}</td>
+                <td>{{activ.description}}</td>
+                <td>{{activ.status}}</td>
+                <td>{{activ.payment}}</td>
+              </tr>
+            </tbody>
+        </table>
+      </mat-tab>
+    </mat-tab-group>    
+  </div>
+  <div id="content">
+    
+  </div>
+</div>

@@ -1,0 +1,18 @@
+@import "~bootstrap/dist/css/bootstrap.css";
+
+html, body { height: 100%; }
+body { margin: 0;
+     font-family: Roboto, "Helvetica Neue", sans-serif;
+    background-color: #141d2b;
+    }
+
+
+/* 
+blue feteh :  #1a2332
+akhdher : #9fef00
+asfer : #e19c05
+blue 8ame9 : #141d2b
+*/
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
