@@ -119,13 +119,13 @@ export class DialogDelete{
   }
   confirmDelete(formulaire: NgForm){
     let token = localStorage.getItem('token');
-    this.programService.checkPassword(token,formulaire.value).subscribe(
+    this.programService.checkPassword(token,formulaire.value['password']).subscribe(
       (response: any) => {
         const link = ['programs'];
-        alert(response);
+        console.log(response);
       },
       (error: any) => {
-        //alert("Program deleted");
+        console.log(error);
       }
     );
   }

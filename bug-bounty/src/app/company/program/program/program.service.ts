@@ -15,8 +15,9 @@ export class ProgramService {
     return this.http.get(this.api_link1,{params: params})
   }
   checkPassword(companyId: string,password: string){
-    let params = new HttpParams().set('companyId',companyId);
-    params.set('password',password);
-    return this.http.get(this.api_link2,{params: params})
+    let params = new HttpParams()
+      .set('companyId',companyId)
+      .set('password',password);
+    return this.http.get<any>(this.api_link2,{params});
   }
 }
