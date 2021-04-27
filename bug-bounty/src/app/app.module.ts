@@ -23,6 +23,7 @@ import { DialogDelete, ProgramComponent } from './company/program/program/progra
 import { MatFormField, MatFormFieldModule, MatLabel } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { SupportComponent } from './support/support.component';
+import { SpecificProgramComponent } from './specific-program/specific-program.component';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import { SupportComponent } from './support/support.component';
     ProgramComponent,
     DialogDelete,
     SupportComponent,
+    SpecificProgramComponent,
   ],
   imports: [
     BrowserModule,

@@ -35,10 +35,25 @@ table td button {
 }
 #ic{
   color:#9fef00;
+  background-color: #1a2332;
+}
+table td button {
+  background-color: transparent;
+  border: 0;
 }
 #ic:hover {
-  color:#e19c05;
+  box-shadow:0 0 30px #eff304;
 }
 ::ng-deep .mat-dialog-container {
   background-color: #1a2332;
+}
+#button1{
+  background-color: #1a2332;
+  border: 1px solid #9fef00;
+}
+#button2{
+  background-color: rgb(89, 189, 235);
+  border: 4px rgb(89, 189, 235) solid;
+  box-shadow:6px 6px 4px rgb(132, 218, 240) inset ;
+
 }

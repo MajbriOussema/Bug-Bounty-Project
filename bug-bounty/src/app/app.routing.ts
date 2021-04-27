@@ -15,6 +15,7 @@ import { LoginGuard } from "./guards/login.guard";
 import { LogoutGuard } from "./guards/logout.guard";
 import { HomeComponent } from "./home/home.component";
 import { ProfileComponent } from "./profile/profile.component";
+import { SpecificProgramComponent } from "./specific-program/specific-program.component";
 import { SupportComponent } from "./support/support.component";
 
 const APP_ROUTES : Routes = [
@@ -27,7 +28,7 @@ const APP_ROUTES : Routes = [
     {path : 'profile' , component: ProfileComponent, canActivate: [LoginGuard]},
     {path: 'program', children: [ 
         {path: '',component: ProgramComponent, canActivate: [CompanyGuard]},
-        {path: ':id',component:ProgramComponent}
+        {path: ':id',component:SpecificProgramComponent}
     ]},
     {path: 'support', component: SupportComponent},
     {path: 'register', children:[

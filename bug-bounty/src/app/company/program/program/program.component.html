@@ -54,7 +54,7 @@
                         <input [(ngModel)]="f.name" style="height:42px;width:400px;padding-right:0" type="text" placeholder="" name="inScope[{{i}}]">
                         <button type="button" class="btn btn-danger btn-sm" style="height:42px;margin-left: 0;width:30px" *ngIf="inScopes.length>1" (click)="deleteInScope(f)"><i class="fas fa-trash-alt"></i></button>
                       </div>
-                      <button type="button" class="btn btn-info btn-sm" style="height:42px;margin-top:10px" (click)="addInScopeField()">Add more In Scopes</button>
+                      <button type="button" id="button1" class="btn btn-info btn-sm" style="height:42px;margin-top:10px" (click)="addInScopeField()">Add more In Scopes</button>
 
                     </div>
                 </div>
@@ -66,22 +66,22 @@
                       <input [(ngModel)]="f.name" style="height:42px;width:400px;padding-right:0" type="text" placeholder="" name="outOfScope[{{i}}]">
                       <button type="button" class="btn btn-danger btn-sm" style="height:42px;margin-left: 0;width:30px" *ngIf="outOfScopes.length>1" (click)="deleteOutOfScope(f)"><i class="fas fa-trash-alt"></i></button>
                     </div>
-                    <button type="button" class="btn btn-info btn-sm" style="height:42px;margin-top:10px" (click)="addOutOfScopeField()">Add more Out Of Scopes</button>
+                    <button type="button" id="button1" class="btn btn-info btn-sm" style="height:42px;margin-top:10px" (click)="addOutOfScopeField()">Add more Out Of Scopes</button>
 
                   </div>
               </div>
           </div> 
             
-            <div class="form-group"><button style="height:42px;margin-top:10px" class="btn btn-primary btn-sm form-control" [disabled]="prog.invalid" type="submit">Submit Program</button></div>
+            <div class="form-group"><button style="height:42px;margin-top:10px" class="btn btn-primary btn-sm form-control" id="button2" [disabled]="prog.invalid" type="submit">Submit Program</button></div>
         </form>
       </mat-tab>
       <mat-tab label="Recent Activities">
         <table class="table ">
             <thead>
               <tr>
-                <th scope="col">Program Name</th>
-                <th scope="col">Date of Creation</th>
-                <th scope="col">Description</th>
+                <th scope="col">ID</th>
+                <th scope="col">Program</th>
+                <th scope="col">Hacker</th>
                 <th scope="col">Status</th>
                 <th scope="col">Payment</th>
               </tr>
