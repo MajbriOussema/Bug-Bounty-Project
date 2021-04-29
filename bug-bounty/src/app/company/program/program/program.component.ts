@@ -52,10 +52,22 @@ export class ProgramComponent implements OnInit {
     this.addInScopeField();
     this.addOutOfScopeField();
   }
-  openDialog(): void {
+  openDeleteDialog(): void {
     const dialogRef = this.dialog.open(DialogDelete, {
       width: '500px',
       height: '250px',
+      data: {name: this.name, animal: this.animal}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
+  }
+  openEditDialog(): void {
+    const dialogRef = this.dialog.open(DialogEdit, {
+      width: '900px',
+      height: '500px',
       data: {name: this.name, animal: this.animal}
     });
 
@@ -128,5 +140,56 @@ export class DialogDelete{
         console.log(error);
       }
     );
+  }
+}
+@Component({
+  selector:'dialog-edit',
+  templateUrl: './dialog/dialog-edit.html',
+})
+export class DialogEdit{
+  model: any = {};
+  inScopes: any = [];
+  outOfScopes: any = [];
+  constructor(
+    private programService: ProgramService,
+    public dialogRef: MatDialogRef<DialogEdit>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+  ngOnInit(){
+    this.addInScopeField();
+    this.addOutOfScopeField();
+  }
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+  updateProgram(formulaire: NgForm){
+    //todo
+  }
+  addInScopeField(){
+    let scope = {
+      name: '',
+      id: new Date().getTime()
+    }
+    this.inScopes.push(scope);
+  }
+  deleteInScope(scope) {
+    for (var i = 0; i < this.inScopes.length; i++) {
+      if (scope.id == this.inScopes[i].id) {
+        this.inScopes.splice(i, 1);
+      }
+    }
+  }
+  addOutOfScopeField(){
+    let scope = {
+      name: '',
+      id: new Date().getTime()
+    }
+    this.outOfScopes.push(scope);
+  }
+  deleteOutOfScope(scope) {
+    for (var i = 0; i < this.outOfScopes.length; i++) {
+      if (scope.id == this.outOfScopes[i].id) {
+        this.outOfScopes.splice(i, 1);
+      }
+    }
   }
 }

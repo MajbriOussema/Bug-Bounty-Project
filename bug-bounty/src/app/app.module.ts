@@ -19,11 +19,11 @@ import { LogoutGuard } from './guards/logout.guard';
 import { ProfileComponent } from './profile/profile.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './app.material';
-import { DialogDelete, ProgramComponent } from './company/program/program/program.component';
+import { DialogDelete, DialogEdit, ProgramComponent } from './company/program/program/program.component';
 import { MatFormField, MatFormFieldModule, MatLabel } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { SupportComponent } from './support/support.component';
-import { SpecificProgramComponent } from './specific-program/specific-program.component';
+import { DialogSubmit, SpecificProgramComponent } from './specific-program/specific-program.component';
 
 
 @NgModule({
@@ -42,6 +42,8 @@ import { SpecificProgramComponent } from './specific-program/specific-program.co
     ProfileComponent,
     ProgramComponent,
     DialogDelete,
+    DialogEdit,
+    DialogSubmit,
     SupportComponent,
     SpecificProgramComponent,
   ],
