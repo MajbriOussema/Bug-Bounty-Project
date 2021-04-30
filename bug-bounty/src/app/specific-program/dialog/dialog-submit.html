@@ -1,3 +1,20 @@
-<div>
-    aaaa
-</div>
+<section class="login-clean">
+    <form #reghacker="ngForm">
+        <h2 class="sr-only">Hacker Registration</h2>
+        <div class="illustration">
+            <h1 style="color: #ffffff;">Hacker Registration</h1>
+        </div>
+    
+        <div class="form-group"><select required ngModel #country="ngModel" class="form-control" id="country" name="country">
+            <option value="0">Select your Country</option>
+            <option value="Afganistan">Afghanistan</option>
+            
+         </select>
+        </div>
+        <div *ngIf="(country.value == 0 && country.touched)" style="color:#e19c05" class="ml-2">
+            You have to select your country
+        </div>
+        <div class="form-group">
+            <input [disabled]="reghacker.invalid||country.value==0" class="btn btn-primary btn-block" type="submit" style="background: #9fef00;" value="Start hacking"></div>
+    </form>
+</section>
