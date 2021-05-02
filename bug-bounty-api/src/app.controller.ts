@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { Controller, Get, Query } from '@nestjs/common';
 import { AppService } from './app.service';
 
@@ -6,7 +7,7 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get('checkPassword')
-  checkPassword(@Query() params: any): object {
-    return this.appService.checkPassword(params.password);
+  checkPassword(@Query() params: any): boolean {
+    return this.appService.checkPassword(params.password).valid;
   }
 }
