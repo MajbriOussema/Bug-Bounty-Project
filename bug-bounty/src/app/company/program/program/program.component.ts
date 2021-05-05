@@ -26,7 +26,7 @@ export class ProgramComponent implements OnInit {
     public dialog: MatDialog,
     public router: Router
   ) { }
-  
+
   activities = [
     {
       prog_name: "prog1",
@@ -36,7 +36,7 @@ export class ProgramComponent implements OnInit {
       payment: "150$"
     }
   ]
-  programs = []
+  programs = [];
   ngOnInit(): void {
     let token = localStorage.getItem('token');
     this.programService.fetchPrograms().subscribe(
@@ -82,7 +82,7 @@ export class ProgramComponent implements OnInit {
     this.router.navigate(link);
   }
 
- 
+
   addProgram(form: NgForm){
     this.programService.addProgram(form.value).subscribe(
       (response: any) => {
@@ -139,13 +139,12 @@ export class DialogDelete{
   }
   confirmDelete(formulaire: NgForm){
     let token = localStorage.getItem('token');
-    this.programService.checkPassword(token,formulaire.value['password']).subscribe(
+    this.programService.checkPassword(token, formulaire.value.password).subscribe(
       (response: any) => {
-        const link = ['programs'];
-        console.log(response);
-      },
+        console.log('can delete');
+        },
       (error: any) => {
-        console.log(error);
+        console.log('error found');
       }
     );
   }
