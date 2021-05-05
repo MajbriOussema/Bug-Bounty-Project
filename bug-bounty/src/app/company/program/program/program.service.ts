@@ -5,19 +5,24 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ProgramService {
-  api_link1 = 'http://localhost:3000/api/programs/fetchPrograms';
+  api_link1 = 'http://localhost:3000/api/program';
   api_link2 = 'http://localhost:3000/api/programs/checkPassword';
+  api_link3 = 'http://localhost:3000/api/program';
   constructor(
     private http: HttpClient
   ) { }
-  fetchPrograms(companyId: string){
-    let params = new HttpParams().set('companyId',companyId);
-    return this.http.get(this.api_link1,{params: params})
+  fetchPrograms(){
+    return this.http.get(this.api_link1);
   }
   checkPassword(companyId: string,password: string){
     let params = new HttpParams()
       .set('companyId',companyId)
       .set('password',password);
     return this.http.get<any>(this.api_link2,{params});
+  }
+  addProgram(form: any){
+    form.company = "company1";
+    console.log(form);
+    return this.http.post(this.api_link3,form);
   }
 }

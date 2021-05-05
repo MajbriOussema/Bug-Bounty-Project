@@ -39,9 +39,9 @@ export class ProgramComponent implements OnInit {
   programs = []
   ngOnInit(): void {
     let token = localStorage.getItem('token');
-    this.programService.fetchPrograms(token).subscribe(
+    this.programService.fetchPrograms().subscribe(
       (response: any) => {
-        alert(response);
+        this.programs = response;
       },
       (error: any) => {
         this.programs = [
@@ -84,7 +84,15 @@ export class ProgramComponent implements OnInit {
 
  
   addProgram(form: NgForm){
-    console.log(form.value);
+    this.programService.addProgram(form.value).subscribe(
+      (response: any) => {
+        const link = ['program/'+response.id];
+        this.router.navigate(link);
+      },
+      (error: any) => {
+        alert("bad");
+      }
+    )
   }
   addInScopeField(){
     let scope = {

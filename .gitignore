@@ -2,3 +2,4 @@
 /bug-bounty-api/node_modules
 /bug-bounty-api/dist
 /bug-bounty/dist
+/bug-bounty-api/.env
