@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class LoginService {
-  api_link = 'http://localhost:3000/api/login';
+  api_link = 'http://localhost:3000/api/auth/login';
   constructor(
     private http: HttpClient
   ) { }

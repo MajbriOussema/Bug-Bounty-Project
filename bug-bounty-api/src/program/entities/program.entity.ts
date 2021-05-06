@@ -1,7 +1,8 @@
+import { TimestampEntity } from "src/generics/timestamp.entities";
 import { Column, CreateDateColumn, DeleteDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 @Entity('program')
-export class ProgramEntity {
+export class ProgramEntity extends TimestampEntity {
     @PrimaryGeneratedColumn()
     id: number;
 
@@ -13,17 +14,6 @@ export class ProgramEntity {
 
     @Column()
     policy: string;
-
-    @CreateDateColumn({
-        update: false
-    })
-    createdAt: Date;
-
-    @UpdateDateColumn()
-    updatedAt: Date;
-
-    @DeleteDateColumn()
-    deletedAt: Date;
 
     @Column("simple-array",{ nullable: true })
     inScope:string[];
