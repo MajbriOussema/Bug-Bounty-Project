@@ -41,7 +41,6 @@ export class ProgramComponent implements OnInit {
     let token = localStorage.getItem('token');
     this.programService.fetchPrograms().subscribe(
       (response: any) => {
-        console.log(response);
         this.programs = response;
       },
       (error: any) => {
@@ -77,8 +76,7 @@ export class ProgramComponent implements OnInit {
       this.animal = result;
     });
   }
-  viewProgram(): void{
-    let id = '1';
+  viewProgram(id : number): void{
     const link = ['program/'+id];
     this.router.navigate(link);
   }

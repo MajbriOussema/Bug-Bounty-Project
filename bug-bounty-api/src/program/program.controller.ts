@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Query } from '@nestjs/common';
+import {Body, Controller, Get, Param, Post, Query} from '@nestjs/common';
 import { AddProgramDto } from './dto/addProgram.dto';
 import { ProgramEntity } from './entities/program.entity';
 import { ProgramService } from './program.service';
@@ -16,7 +16,13 @@ export class ProgramController {
     async addProgram(
         @Body() addProgramDto: AddProgramDto
     ): Promise<ProgramEntity>{
-        console.log(addProgramDto);
         return await this.programService.addProgram(addProgramDto);
     }
+
+    @Get(':id')
+    async getOneProgram(@Param() params) : Promise<ProgramEntity>{
+        return await this.programService.getOneProgram(+params.id);
+    }
+
 }
+

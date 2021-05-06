@@ -1,13 +1,13 @@
 <section class="container-clean">
     <form>
         <div class="illustration">
-            <h1 style="color: #ffffff;text-align: center;">Program : <span style="color:#9fef00">{{prog_name}}</span></h1>
+            <h1 style="color: #ffffff;text-align: center;">Program : <span style="color:#9fef00">{{program.name}}</span></h1>
             <div class="row" style="text-align: center;">
                 <div class="col"><h3>Reports Resolved : <span>5</span></h3></div>
                 <div class="col"><h3>Average bounty : <span>90$</span></h3></div>
             </div>
             <div class="row" style="text-align: center;">
-                <div class="col"><h3>Program Launched On : <span>24/05/2019</span></h3></div>
+                <div class="col"><h3>Program Launched On : <span>{{program.createdAt | date:"MM/dd/YYYY"}}</span></h3></div>
                 <div class="col"><button type="button" class="btn btn-info btn-lg" (click)="openSubmitDialog()" >Submit report</button></div>
             </div>
             <hr/>
@@ -17,7 +17,7 @@
             </div>
             <div>
                 <p>
-                    Reddit’s responsible disclosure and bug bounty program is focused on protecting our users’ private data, accounts, and identities. The vast majority of data posted to Reddit every day is intended to be public, however Reddit does host private data including messages, chats, voting records for accounts without the public voting option enabled, subreddit subscriptions (when tied to a user), and (optional) email addresses.
+                    {{program.policy}}
                 </p>
             </div>
             <div class="row">
@@ -31,13 +31,9 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>www.twitter.com</td>
-                        <td>High</td>    
-                      </tr>
-                      <tr>
-                        <td>www.api-twitter.com</td>
-                        <td>Critical</td>    
+                      <tr *ngFor="let sev of program.severity;let inscope of program.inScope">
+                        <td>{{inscope}}</td>
+                        <td>{{sev}}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -53,8 +49,8 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>www.twitter-tefeh.com</td>
+                      <tr *ngFor="let outscope of program.outOfScope">
+                        <td>{{outscope}}</td>
                       </tr>
 
                     </tbody>

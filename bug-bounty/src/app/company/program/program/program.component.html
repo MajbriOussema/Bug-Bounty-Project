@@ -17,7 +17,7 @@
               <td>{{prog.createdAt}}</td>
               <td>{{prog.updatedAt}}</td>
               <td>
-                <button type="button" class="btn btn-primary" (click)="viewProgram()"><i class="far fa-eye" id="ic"></i></button>
+                <button type="button" class="btn btn-primary" (click)="viewProgram(prog.id)"><i class="far fa-eye" id="ic"></i></button>
                 <button type="button" class="btn btn-success" (click)="openEditDialog()"><i class="fas fa-edit" id="ic"></i></button>
                 <button type="button" class="btn btn-danger" (click)="openDeleteDialog()"><i class="far fa-trash-alt" id="ic"></i></button>
               </td>

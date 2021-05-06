@@ -16,4 +16,7 @@ export class ProgramService {
     async addProgram(program: AddProgramDto): Promise<ProgramEntity> {
         return await this.programRepository.save(program);
     }
+    async getOneProgram(searchedId : number): Promise<ProgramEntity>{
+        return await this.programRepository.findOne({id:searchedId});
+    }
 }

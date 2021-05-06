@@ -6,6 +6,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { ProgramModule } from './program/program.module';
 
+
 dotenv.config()
 @Module({
   imports: [
@@ -23,7 +24,7 @@ dotenv.config()
       synchronize: true,
     }
     ),
-    ProgramModule
+    ProgramModule,
   ],
   controllers: [AppController],
   providers: [AppService],
