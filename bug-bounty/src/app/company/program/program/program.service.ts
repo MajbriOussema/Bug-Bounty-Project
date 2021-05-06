@@ -21,8 +21,12 @@ export class ProgramService {
     return this.http.get<any>(this.api_link2,{params});
   }
   addProgram(form: any){
-    form.company = "company1";
-    console.log(form);
-    return this.http.post(this.api_link3,form);
+    const inscope = Object.keys(form).filter((item) => item.startsWith("inScope"));
+   // const inscope = Object.keys(form).filter((item) => item.startsWith("inScope"));
+    const inscopevalues = [];
+    for (let val of inscope){
+      inscopevalues.push(form[val]);
+    }
+    return this.http.post(this.api_link3,{name:form.name,policy:form.policy,company:'company',inScope:inscopevalues});
   }
 }

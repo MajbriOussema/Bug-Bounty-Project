@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsString } from "class-validator";
+import {IsArray, IsNotEmpty, IsString} from "class-validator";
 
 export class AddProgramDto {
     @IsNotEmpty()
@@ -12,4 +12,8 @@ export class AddProgramDto {
     @IsNotEmpty()
     @IsString()
     company: string;
+    @IsArray()
+    inScope: string[];
+    @IsArray()
+    outOfScope: string[];
 } 

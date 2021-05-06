@@ -5,7 +5,8 @@ import * as dotenv from 'dotenv';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { ProgramModule } from './program/program.module';
-import { ProgramEntity } from './program/entities/program.entity';
+
+dotenv.config()
 @Module({
   imports: [
     ConfigModule.forRoot({
