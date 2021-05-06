@@ -20,14 +20,12 @@ export class LoginComponent implements OnInit {
   doLogin(formulaire: NgForm): any{
     this.logIn.login(formulaire.value).subscribe(
       (response: any) => {
-        localStorage.setItem('token','lhacker');
+        localStorage.setItem('token',response.token);
         const link = [''];
         this.router.navigate(link);
       },
       (error: any) => {
-        localStorage.setItem('token','lhacker');
-        const link = ['error'];
-        this.router.navigate(link);
+        console.log(error);
       }
     )
   }

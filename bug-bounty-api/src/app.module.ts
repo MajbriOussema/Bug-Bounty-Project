@@ -5,7 +5,7 @@ import * as dotenv from 'dotenv';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { ProgramModule } from './program/program.module';
-
+import { AuthModule } from './auth/auth.module';
 
 dotenv.config()
 @Module({
@@ -25,6 +25,7 @@ dotenv.config()
     }
     ),
     ProgramModule,
+    AuthModule
   ],
   controllers: [AppController],
   providers: [AppService],

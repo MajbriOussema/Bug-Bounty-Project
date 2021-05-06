@@ -23,14 +23,13 @@ export class ReghackerComponent implements OnInit {
   registerHacker(formulaire: NgForm): any{
     this.reghacker.register(formulaire.value).subscribe(
       (response: any) => {
-        localStorage.setItem('token','hacker');
-        const link = [''];
-        this.router.navigate(link);
+        //localStorage.setItem('token','hacker');
+        alert("success");
+        /*const link = [''];
+        this.router.navigate(link);*/
       },
       (error: any) => {
-        localStorage.setItem('token','hacker');
-        const link = ['error'];
-        this.router.navigate(link);
+        
       }
     )
   }
