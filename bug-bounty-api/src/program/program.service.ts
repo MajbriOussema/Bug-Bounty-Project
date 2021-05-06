@@ -14,7 +14,6 @@ export class ProgramService {
         return await this.programRepository.find();
     }
     async addProgram(program: AddProgramDto): Promise<ProgramEntity> {
-        console.log(program);
         return await this.programRepository.save(program);
     }
 }

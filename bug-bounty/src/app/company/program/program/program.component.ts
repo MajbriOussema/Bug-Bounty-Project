@@ -41,7 +41,7 @@ export class ProgramComponent implements OnInit {
     let token = localStorage.getItem('token');
     this.programService.fetchPrograms().subscribe(
       (response: any) => {
-        console.log(response[20].inScope[0]);
+        console.log(response);
         this.programs = response;
       },
       (error: any) => {

@@ -22,11 +22,20 @@ export class ProgramService {
   }
   addProgram(form: any){
     const inscope = Object.keys(form).filter((item) => item.startsWith("inScope"));
-   // const inscope = Object.keys(form).filter((item) => item.startsWith("inScope"));
+    const outofscope = Object.keys(form).filter((item) => item.startsWith("outOfScope"));
+    const severity = Object.keys(form).filter((item) => item.startsWith("severity"));
     const inscopevalues = [];
+    const outofscopevalues = [];
+    const severityvalues = [];
     for (let val of inscope){
       inscopevalues.push(form[val]);
     }
-    return this.http.post(this.api_link3,{name:form.name,policy:form.policy,company:'company',inScope:inscopevalues});
+    for (let val of outofscope){
+      outofscopevalues.push(form[val]);
+    }
+    for (let val of severity){
+      severityvalues.push(form[val]);
+    }
+    return this.http.post(this.api_link3,{name:form.name,policy:form.policy,company:'company',inScope:inscopevalues,outOfScope:outofscopevalues,severity:severityvalues});
   }
 }
