@@ -3,7 +3,7 @@
         <div  class="form-row">
             <div class="col">
                 <div class="form-group"><label style="color: #ffffff" for="program name"><strong>Program Name</strong></label>
-                  <input required [(ngModel)] = "model.prog_name" #prog_name="ngModel" class="form-control" type="text" id="prog_name" placeholder="Program Name" name="prog_name"></div>
+                  <input required [(ngModel)] = "model.prog_name" #prog_name="ngModel" class="form-control" type="text" id="prog_name" placeholder="Program Name" name="name"></div>
                 </div>
         </div>
         <div *ngIf="prog_name.errors && (prog_name.dirty || prog_name.touched)" style="color:#e19c05" class="ml-2 mb-3">

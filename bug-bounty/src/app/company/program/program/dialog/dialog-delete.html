@@ -1,5 +1,5 @@
 <div>
-    <form #confirm="ngForm" (submit)="confirmDelete(confirm)">
+    <form #confirm="ngForm" (submit)="confirmDelete(confirm,data.program_id)">
         <h2 class="sr-only">Confirm Dialog</h2>
         <div class="illustration">
             <h1 style="color: #ffffff;">Please confirm you password</h1>

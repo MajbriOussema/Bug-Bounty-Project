@@ -41,18 +41,22 @@ export class ProgramService {
       severity:severityvalues
     });
   }
-  updateProgram(id,form : any) {
+  updateProgram(id : string,form : any) {
     const inscopevalues = this.getArray(form, "inScope");
     const outofscopevalues = this.getArray(form, "outOfScope");
     const severityvalues = this.getArray(form, "severity");
     const link = this.api_link1+'/'+id;
-    return this.http.post(this.api_link1, {
+    return(this.http.post(link, {
       name: form.name,
       policy: form.policy,
       company: 'company',
       inScope: inscopevalues,
       outOfScope: outofscopevalues,
       severity: severityvalues
-    });
+    }));
+  }
+
+  deleteProgram(){
+    //todo
   }
 }
