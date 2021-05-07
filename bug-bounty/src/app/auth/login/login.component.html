@@ -12,6 +12,9 @@
         <div *ngIf="password.errors && (password.dirty || password.touched)" style="color:#e19c05" class="ml-2 mb-3">
             Password is required
         </div>
+        <div *ngIf="triggerError()" style="color:red" class="ml-2 mb-3">
+            {{serverError}}
+        </div>
         <div class="form-group"><button class="btn btn-primary btn-block" [disabled]="login.invalid" type="submit" style="background: #9fef00;">Log In</button></div><a class="forgot" href="#">Forgot your email or password?</a>
     </form>
 </section>

@@ -9,12 +9,18 @@ import { LoginService } from './login.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  serverError: string;
   constructor(
     private logIn: LoginService,
     private router: Router,
-  ) { }
-
+  ) { 
+  }
+  triggerError(){
+    if(!!this.serverError){
+      return true;
+    }
+    return false;
+  }
   ngOnInit(): void {
   }
   doLogin(formulaire: NgForm): any{
@@ -25,7 +31,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate(link);
       },
       (error: any) => {
-        console.log(error);
+        this.serverError = error.error.message;
       }
     )
   }
