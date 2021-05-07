@@ -24,7 +24,7 @@ export class AuthService {
         try {
             await this.userRepository.save(user);
         } catch (e) {
-            throw new ConflictException('Le username et le email doivent être unique');
+            throw new ConflictException('email al');
         }
         return {
             'id': user.id,

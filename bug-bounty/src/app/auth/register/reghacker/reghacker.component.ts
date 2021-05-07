@@ -9,7 +9,7 @@ import { ReghackerService } from './reghacker.service';
   styleUrls: ['./reghacker.component.css']
 })
 export class ReghackerComponent implements OnInit {
-  private _username: string;
+  serverError: string;
   constructor(
     private reghacker: ReghackerService,
     private router: Router,
@@ -17,19 +17,16 @@ export class ReghackerComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  username(): string{
-    return this._username;
-  }
+  
   registerHacker(formulaire: NgForm): any{
     this.reghacker.register(formulaire.value).subscribe(
       (response: any) => {
-        //localStorage.setItem('token','hacker');
         alert("success");
-        /*const link = [''];
-        this.router.navigate(link);*/
+        const link = ['login'];
+        this.router.navigate(link);
       },
       (error: any) => {
-        
+        this.serverError = error.error.message;
       }
     )
   }
