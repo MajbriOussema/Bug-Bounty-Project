@@ -158,7 +158,6 @@ export class DialogEdit{
   model: any = {};
   inScopes: any = [];
   outOfScopes: any = [];
-  currentid = 0 ;
   constructor(
     private programService: ProgramService,
     public dialogRef: MatDialogRef<DialogEdit>,
@@ -171,16 +170,16 @@ export class DialogEdit{
   onNoClick(): void {
     this.dialogRef.close();
   }
-  setId(id:number){
-    this.currentid = id;
-  }
+
   updateProgram(form: NgForm,program_id:any){
     this.programService.updateProgram(program_id,form.value).subscribe(
       (response: any) => {
-        console.log(response)
+        const link = ['program/'+response.id]
+        this.dialogRef.close();
+        this.router.navigate(link);
       },
       (error: any) => {
-        alert("bad");
+        console.log(error);
       }
     )
   }

@@ -19,7 +19,7 @@
               <td>
                 <button type="button" class="btn btn-primary" (click)="viewProgram(prog.id)"><i class="far fa-eye" id="ic"></i></button>
                 <button type="button" class="btn btn-success" (click)="openEditDialog(prog.id)"><i class="fas fa-edit" id="ic"></i></button>
-                <button type="button" class="btn btn-danger" (click)="openDeleteDialog()"><i class="far fa-trash-alt" id="ic"></i></button>
+                <button type="button" class="btn btn-danger" (click)="openDeleteDialog(prog.id)"><i class="far fa-trash-alt" id="ic"></i></button>
               </td>
             </tr>
 
@@ -57,13 +57,13 @@
                         </div>
                         <div class="col-3">
                           <select class="form-control" [(ngModel)]="f.severity" style="margin-left:10px" type="text" placeholder="" name="severity[{{i}}]">
-                            <option value="low" selected>Low</option>
+                            <option value="low">Low</option>
                             <option value="medium" >Medium</option>
                             <option value="high" >High</option>
                             <option value="critical" >Critical</option>
                           </select>
                         </div>
-                        
+
                         <button type="button" id="buttontrash" class="btn btn-danger btn-sm col-1 " *ngIf="inScopes.length>1" (click)="deleteInScope(f)"><i class="fas fa-trash-alt"></i></button>
                       </div>
                       <div class="col-7">
@@ -81,7 +81,7 @@
                         <input  class="form-control" style="margin-bottom: 10px;" [(ngModel)]="f.name" type="text" placeholder="" name="outOfScope[{{i}}]">
                       </div>
                       <button type="button" id="buttontrash" class="btn btn-danger btn-sm col-1" style="margin-left: 10px" *ngIf="outOfScopes.length>1" (click)="deleteOutOfScope(f)"><i class="fas fa-trash-alt"></i></button>
-      
+
                     </div>
                     <div class="col">
                       <button type="button" id="button1" class="btn btn-info btn-sm" (click)="addOutOfScopeField()">Add more Out Of Scopes</button>
