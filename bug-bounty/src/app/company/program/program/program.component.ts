@@ -15,7 +15,6 @@ export interface DialogData {
 })
 
 export class ProgramComponent implements OnInit {
-  animal: string;
   name: string;
   model: any = {};
   inScopes: any = [];
@@ -52,16 +51,11 @@ export class ProgramComponent implements OnInit {
     this.addOutOfScopeField();
   }
 
-  openDeleteDialog(): void {
+  openDeleteDialog(id :any): void {
     const dialogRef = this.dialog.open(DialogDelete, {
       width: '500px',
       height: '250px',
-      data: {name: this.name, animal: this.animal}
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.animal = result;
+      data: {name: this.name, program_id: id}
     });
   }
   openEditDialog(id: any): void {
@@ -138,11 +132,19 @@ export class DialogDelete{
   onNoClick(): void {
     this.dialogRef.close();
   }
-  confirmDelete(formulaire: NgForm){
+  confirmDelete(formulaire: NgForm,id:any){
     let token = localStorage.getItem('token');
     this.programService.checkPassword(token, formulaire.value.password).subscribe(
       (response: any) => {
         console.log('can delete');
+       //this.programService.deleteProgram(id).subscribe(
+        //  (response) => {
+          //  console.log("deleted")
+          //},
+         // (error) => {
+           // console.log(error)
+          //}
+       // )
         },
       (error: any) => {
         console.log('error found');

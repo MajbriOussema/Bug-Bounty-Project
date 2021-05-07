@@ -55,4 +55,8 @@ export class ProgramService {
       severity: severityvalues
     }));
   }
+
+  deleteProgram(){
+    //todo
+  }
 }
