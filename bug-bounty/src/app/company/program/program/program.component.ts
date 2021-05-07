@@ -6,8 +6,7 @@ import { Router } from '@angular/router';
 import { identifierModuleUrl } from '@angular/compiler';
 
 export interface DialogData {
-  animal: string;
-  name: string;
+  program_id: any;
 }
 @Component({
   selector: 'app-program',
@@ -65,16 +64,17 @@ export class ProgramComponent implements OnInit {
       this.animal = result;
     });
   }
-  openEditDialog(): void {
+  openEditDialog(id: any): void {
     const dialogRef = this.dialog.open(DialogEdit, {
       width: '900px',
       height: '500px',
-      data: {name: this.name, animal: this.animal}
+      data: {
+        program_id: id
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      this.animal = result;
     });
   }
   viewProgram(id : number): void{
@@ -174,8 +174,8 @@ export class DialogEdit{
   setId(id:number){
     this.currentid = id;
   }
-  updateProgram(form: NgForm){
-    this.programService.updateProgram(this.currentid,form.value).subscribe(
+  updateProgram(form: NgForm,program_id:any){
+    this.programService.updateProgram(program_id,form.value).subscribe(
       (response: any) => {
         console.log(response)
       },
