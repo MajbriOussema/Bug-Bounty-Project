@@ -5,21 +5,21 @@
                 <div class="form-group"><label style="color: #ffffff" for="program name"><strong>Program Name</strong></label>
                   <input required [(ngModel)] = "model.prog_name" #prog_name="ngModel" class="form-control" type="text" id="prog_name" placeholder="Program Name" name="prog_name"></div>
                 </div>
-        </div>   
+        </div>
         <div *ngIf="prog_name.errors && (prog_name.dirty || prog_name.touched)" style="color:#e19c05" class="ml-2 mb-3">
           Program name is required
       </div>
-        <div class="form-row">    
+        <div class="form-row">
             <div class="col">
                 <div class="form-group"><label style="color: #ffffff" for="policy"><strong>Policy</strong></label>
                   <textarea required #policy="ngModel" style="resize:none;" [(ngModel)] = "model.policy" class="form-control" id="policy" placeholder="Policy" name="policy" rows="5"></textarea>
                 </div>
             </div>
-        </div>    
+        </div>
         <div *ngIf="policy.errors && (policy.dirty || policy.touched)" style="color:#e19c05" class="ml-2 mb-3">
           Policy is required
         </div>
-        <div class="form-row">    
+        <div class="form-row">
             <div class="col">
                 <div class="form-group"><label style="color: #ffffff" for="inscope"><strong>In Scope</strong></label>
                   <div *ngFor="let f of inScopes;let i = index">
@@ -30,8 +30,8 @@
 
                 </div>
             </div>
-        </div> 
-        <div class="form-row">    
+        </div>
+        <div class="form-row">
           <div class="col">
               <div class="form-group"><label style="color: #ffffff" for="outofscope"><strong>Out Of Scope</strong></label>
                 <div *ngFor="let f of outOfScopes;let i = index">
