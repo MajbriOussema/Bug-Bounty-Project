@@ -7,10 +7,17 @@ import { Injectable } from '@angular/core';
 export class ProgramService {
   api_link1 = 'http://localhost:3000/api/program';
   api_link2 = 'http://localhost:3000/api/programs/checkPassword';
-  api_link3 = 'http://localhost:3000/api/program';
   constructor(
     private http: HttpClient
   ) { }
+  getArray(form:any,startwith:string){
+    const tmp1 = Object.keys(form).filter((item) => item.startsWith(startwith));
+    const tmp2 = [];
+    for (let val of tmp1){
+      tmp2.push(form[val]);
+    }
+    return(tmp2);
+  }
   fetchPrograms(){
     return this.http.get(this.api_link1);
   }
@@ -21,21 +28,31 @@ export class ProgramService {
     return this.http.get<any>(this.api_link2,{params});
   }
   addProgram(form: any){
-    const inscope = Object.keys(form).filter((item) => item.startsWith("inScope"));
-    const outofscope = Object.keys(form).filter((item) => item.startsWith("outOfScope"));
-    const severity = Object.keys(form).filter((item) => item.startsWith("severity"));
-    const inscopevalues = [];
-    const outofscopevalues = [];
-    const severityvalues = [];
-    for (let val of inscope){
-      inscopevalues.push(form[val]);
-    }
-    for (let val of outofscope){
-      outofscopevalues.push(form[val]);
-    }
-    for (let val of severity){
-      severityvalues.push(form[val]);
-    }
-    return this.http.post(this.api_link3,{name:form.name,policy:form.policy,company:'company',inScope:inscopevalues,outOfScope:outofscopevalues,severity:severityvalues});
+    const inscopevalues = this.getArray(form,"inScope");
+    const outofscopevalues = this.getArray(form,"outOfScope");
+    const severityvalues = this.getArray(form,"severity");
+
+    return this.http.post(this.api_link1,{
+      name:form.name,
+      policy:form.policy,
+      company:'company',
+      inScope:inscopevalues,
+      outOfScope:outofscopevalues,
+      severity:severityvalues
+    });
+  }
+  updateProgram(id,form : any) {
+    const inscopevalues = this.getArray(form, "inScope");
+    const outofscopevalues = this.getArray(form, "outOfScope");
+    const severityvalues = this.getArray(form, "severity");
+    const link = this.api_link1+'/'+id;
+    return this.http.post(this.api_link1, {
+      name: form.name,
+      policy: form.policy,
+      company: 'company',
+      inScope: inscopevalues,
+      outOfScope: outofscopevalues,
+      severity: severityvalues
+    });
   }
 }

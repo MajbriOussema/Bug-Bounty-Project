@@ -52,6 +52,7 @@ export class ProgramComponent implements OnInit {
     this.addInScopeField();
     this.addOutOfScopeField();
   }
+
   openDeleteDialog(): void {
     const dialogRef = this.dialog.open(DialogDelete, {
       width: '500px',
@@ -157,9 +158,11 @@ export class DialogEdit{
   model: any = {};
   inScopes: any = [];
   outOfScopes: any = [];
+  currentid = 0 ;
   constructor(
     private programService: ProgramService,
     public dialogRef: MatDialogRef<DialogEdit>,
+    public router: Router,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
   ngOnInit(){
     this.addInScopeField();
@@ -168,8 +171,18 @@ export class DialogEdit{
   onNoClick(): void {
     this.dialogRef.close();
   }
+  setId(id:number){
+    this.currentid = id;
+  }
   updateProgram(form: NgForm){
-    console.log(form);
+    this.programService.updateProgram(this.currentid,form.value).subscribe(
+      (response: any) => {
+        console.log(response)
+      },
+      (error: any) => {
+        alert("bad");
+      }
+    )
   }
   addInScopeField(){
     let scope = {
