@@ -20,7 +20,6 @@ import { SupportComponent } from "./support/support.component";
 
 const APP_ROUTES : Routes = [
     {path: '', component: HomeComponent},
-    {path: 'login', component: LoginComponent},
     {path: 'directory',component: DirectoryComponent},
     {path: 'login', component: LoginComponent, canActivate: [LogoutGuard]},
     {path: 'dashboard',component: DashboardComponent, canActivate: [LoginGuard]},
@@ -29,7 +28,7 @@ const APP_ROUTES : Routes = [
     {path: 'program', children: [ 
         {path: '',component: ProgramComponent, canActivate: [CompanyGuard]},
         {path: ':id',component:SpecificProgramComponent}
-    ]},
+    ],canActivate: [LoginGuard]},
     {path: 'support', component: SupportComponent},
     {path: 'register', children:[
         {path: '', component: RegisterComponent},

@@ -24,6 +24,7 @@ import { MatFormField, MatFormFieldModule, MatLabel } from '@angular/material/fo
 import { MatInputModule } from '@angular/material/input';
 import { SupportComponent } from './support/support.component';
 import { DialogSubmit, SpecificProgramComponent } from './specific-program/specific-program.component';
+import { LoginInterceptorProvider } from './interceptors/login.interceptor';
 
 
 @NgModule({
@@ -59,8 +60,9 @@ import { DialogSubmit, SpecificProgramComponent } from './specific-program/speci
     MatInputModule,
   ],
   providers: [
+    LoginInterceptorProvider,
     LoginGuard,
-    LogoutGuard
+    LogoutGuard,
   ],
   bootstrap: [AppComponent]
 })

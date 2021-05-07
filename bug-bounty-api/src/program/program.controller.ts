@@ -1,4 +1,5 @@
-import {Body, Controller, Get, Param, Post, Query} from '@nestjs/common';
+import {Body, Controller, Get, Param, Post, Query, UseGuards} from '@nestjs/common';
+import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 import { AddProgramDto } from './dto/addProgram.dto';
 import { ProgramEntity } from './entities/program.entity';
 import { ProgramService } from './program.service';
@@ -9,6 +10,7 @@ export class ProgramController {
         private programService: ProgramService
     ){}
     @Get()
+    @UseGuards(JwtAuthGuard)
     async getAllPrograms() : Promise<ProgramEntity[]>{
         return await this.programService.getPrograms();
     }

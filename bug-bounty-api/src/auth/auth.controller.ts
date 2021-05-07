@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { AddHackerDto } from './dto/add-hacker.dto';
 import { LoginDto } from './dto/login.dto';
@@ -9,6 +9,12 @@ export class AuthController {
     constructor(
         private authService: AuthService
     ){}
+    @Get('check')
+    checkLogin(
+        
+    ){
+        console.log("AAA");
+    }
     @Post('register/hacker')
     registerHacker(
         @Body() data: AddHackerDto

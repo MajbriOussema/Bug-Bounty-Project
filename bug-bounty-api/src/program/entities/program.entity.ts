@@ -1,7 +1,4 @@
 import { Column, CreateDateColumn, DeleteDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
-//import {Transform} from "stream";
-import { Transform } from 'class-transformer';
-import moment from "moment";
 
 @Entity('program')
 export class ProgramEntity {
