@@ -1,1 +1,55 @@
-<p>hacktivity works!</p>
+<div>
+    <div class="row" id="mainTopRow">
+        <div class="col">
+            <h1>See the latest hacker activity</h1>
+        </div>
+        <div class="col-3 form-outline">
+            <input type="search" id="form1" class="form-control" placeholder="Search" aria-label="Search" />
+          </div>
+    </div>
+    <div class="row" id="mainBotRow"> 
+        <div class="col-3" id="leftCol">
+            <div id="head">Type</div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+                <label class="form-check-label" for="flexRadioDefault1">
+                  All
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                <label class="form-check-label" for="flexRadioDefault2">
+                  Published
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                <label class="form-check-label" for="flexRadioDefault2">
+                  Disclosed
+                </label>
+            </div>
+        </div>
+        <div class="col" id="mainCol">
+            <table>
+                <tr *ngFor="let hacktivity of hacktivities" id="tRow">
+                    <td class="col-9" style="margin-bottom: 30px;">
+                        <div class="row">
+                            <a href="#">Bypass of Rate limiting in secure_session endpoint's password input</a>
+                        </div>
+                        <div class="row">
+                            By&nbsp;
+                            <a href="#" id="hacker">haflout</a>
+                            &nbsp;to &nbsp;
+                            <a href="#" id="program">Uber</a>
+                        </div>
+                    </td>       
+                    <td class="col-3">
+                        <div id="status" style="margin-bottom: 40px;padding-top: 10px;">disclosed 4 days ago 
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    
+</div>

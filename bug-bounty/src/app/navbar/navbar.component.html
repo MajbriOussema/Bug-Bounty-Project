@@ -2,6 +2,9 @@
     <div class="container"><a class="navbar-brand js-scroll-trigger" [routerLink]="['']" routerLinkActive="active">BUG-BOUNTY</a><button data-toggle="collapse" data-target="#navbarResponsive" class="navbar-toggler text-white bg-primary navbar-toggler-right text-uppercase rounded" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" [routerLink]="['hacktivity']" routerLinkActive="active">Hacktivitiy</a></li>
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" [routerLink]="['directory']" routerLinkActive="active">Directory</a></li>
+
                 <li *ngIf="!lgService.isLoggedIn()" class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" [routerLink]="['register']" routerLinkActive="active">Sign Up</a></li>
                 <li *ngIf="!lgService.isLoggedIn()" class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" [routerLink]="['login']" routerLinkActive="active">Log In</a></li>
                 <li *ngIf="lgService.isLoggedIn()" class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"  [routerLink]="['program']" routerLinkActive="active">Programs</a></li>

@@ -9,12 +9,6 @@ export class AuthController {
     constructor(
         private authService: AuthService
     ){}
-    @Get('check')
-    checkLogin(
-        
-    ){
-        console.log("AAA");
-    }
     @Post('register/hacker')
     registerHacker(
         @Body() data: AddHackerDto

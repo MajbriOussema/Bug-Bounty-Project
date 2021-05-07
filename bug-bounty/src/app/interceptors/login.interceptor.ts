@@ -10,7 +10,6 @@ export class LoginInterceptor implements HttpInterceptor{
             const cloneReq = req.clone({
                 headers
             });
-            console.log(cloneReq);
             return next.handle(cloneReq);
         }
         return next.handle(req);

@@ -83,6 +83,7 @@ export class ProgramComponent implements OnInit {
 
 
   addProgram(form: NgForm){
+    console.log(form.value);
     this.programService.addProgram(form.value).subscribe(
       (response: any) => {
         const link = ['program/'+response.id];
