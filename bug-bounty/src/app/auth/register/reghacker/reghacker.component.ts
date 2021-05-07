@@ -17,11 +17,15 @@ export class ReghackerComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  
+  triggerError(){
+    if(!!this.serverError){
+      return true;
+    }
+    return false;
+  }
   registerHacker(formulaire: NgForm): any{
     this.reghacker.register(formulaire.value).subscribe(
       (response: any) => {
-        alert("success");
         const link = ['login'];
         this.router.navigate(link);
       },

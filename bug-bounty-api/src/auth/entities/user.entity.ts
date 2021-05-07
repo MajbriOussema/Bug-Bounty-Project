@@ -18,6 +18,12 @@ export class UserEntity extends TimestampEntity{
     })
     username: string;
     @Column()
+    firstname: string;
+    @Column()
+    lastname: string;
+    @Column()
+    company: string;
+    @Column()
     country: string;
     @Column()
     password: string;

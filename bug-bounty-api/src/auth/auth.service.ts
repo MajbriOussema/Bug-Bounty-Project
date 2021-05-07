@@ -15,6 +15,13 @@ export class AuthService {
         private jwtService: JwtService
     ){}
     async registerHacker(data: AddHackerDto): Promise<Partial<UserEntity>>{
+        const username = data.username;
+        const test = await this.userRepository
+        .createQueryBuilder('user')
+        .where('user.username = :username',{username}).getOne();
+        if(test){
+            throw new ConflictException('Username already exists');
+        }
         const user = this.userRepository.create({
             ...data
         });
@@ -24,7 +31,7 @@ export class AuthService {
         try {
             await this.userRepository.save(user);
         } catch (e) {
-            throw new ConflictException('email al');
+            throw new ConflictException('Email already exists');
         }
         return {
             'id': user.id,

@@ -21,14 +21,11 @@ export class RegcompanyComponent implements OnInit {
   registerCompany(formulaire: NgForm): any {
     this.regcompany.register(formulaire.value).subscribe(
       (response: any) => {
-        localStorage.setItem('token','company');
-        const link = [''];
+        const link = ['login'];
         this.router.navigate(link);
       },
       (error: any) => {
-        const link = ['error'];
-        localStorage.setItem('token','company');
-        this.router.navigate(link);
+
       }
     )
   }

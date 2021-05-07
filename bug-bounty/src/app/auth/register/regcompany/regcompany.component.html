@@ -4,10 +4,11 @@
         <div class="illustration">
             <h1 style="color: #ffffff;">Company Registration</h1>
         </div>
-        <div class="form-group"><input required ngModel #name="ngModel" type="text" class="form-control" name="name" placeholder="FullName" /></div>
+        <div class="form-group"><input required ngModel #name="ngModel" type="text" class="form-control" name="username" placeholder="Username" /></div>
         <div *ngIf="name.errors && (name.dirty || name.touched)" style="color: #e19c05" class="ml-2 mb-3">
-            Full name is required
+            Username is required
         </div>
+       
         <div class="form-group"><input required ngModel #email="ngModel" type="email" class="form-control" name="email" placeholder="Business Email" /></div>
         <div *ngIf="email.errors && (email.dirty || email.touched)" style="color:#e19c05" class="ml-2 mb-3">
             Email is required

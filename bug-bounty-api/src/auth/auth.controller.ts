@@ -1,5 +1,6 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { AuthService } from './auth.service';
+import { AddCompanyDto } from './dto/add-company.dto';
 import { AddHackerDto } from './dto/add-hacker.dto';
 import { LoginDto } from './dto/login.dto';
 import { UserEntity } from './entities/user.entity';
@@ -27,7 +28,7 @@ export class AuthController {
 
     @Post('register/company')
     registerCompany(
-        @Body() data
+        @Body() data: AddCompanyDto
     ){
         console.log("Company registration");
         console.log(data);

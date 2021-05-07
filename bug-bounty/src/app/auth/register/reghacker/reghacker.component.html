@@ -274,6 +274,9 @@
         <div *ngIf="(country.value == 0 && country.touched)" style="color:#e19c05" class="ml-2">
             You have to select your country
         </div>
+        <div *ngIf="triggerError()" style="color:red" class="ml-2 mb-3">
+            {{serverError}}
+        </div>
         <div class="form-group">
             <input [disabled]="reghacker.invalid||country.value==0" class="btn btn-primary btn-block" type="submit" style="background: #9fef00;" value="Start hacking"></div>
     </form>
