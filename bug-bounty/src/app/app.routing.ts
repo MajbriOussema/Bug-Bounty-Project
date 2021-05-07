@@ -25,10 +25,10 @@ const APP_ROUTES : Routes = [
     {path: 'dashboard',component: DashboardComponent, canActivate: [LoginGuard]},
     {path: 'error', component: ErrorComponent},
     {path : 'profile' , component: ProfileComponent, canActivate: [LoginGuard]},
-    {path: 'program', children: [ 
+    {path: 'program', children: [
         {path: '',component: ProgramComponent, canActivate: [CompanyGuard]},
         {path: ':id',component:SpecificProgramComponent}
-    ],canActivate: [LoginGuard]},
+    ]},
     {path: 'support', component: SupportComponent},
     {path: 'register', children:[
         {path: '', component: RegisterComponent},

@@ -167,8 +167,8 @@ export class DialogEdit{
   onNoClick(): void {
     this.dialogRef.close();
   }
-  updateProgram(formulaire: NgForm){
-    //todo
+  updateProgram(form: NgForm){
+    console.log(form);
   }
   addInScopeField(){
     let scope = {

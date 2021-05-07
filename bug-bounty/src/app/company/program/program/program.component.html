@@ -14,8 +14,8 @@
           <tbody>
             <tr *ngFor="let prog of programs;">
               <td>{{prog.name}}</td>
-              <td>{{prog.createdAt}}</td>
-              <td>{{prog.updatedAt}}</td>
+              <td>{{prog.createdAt | date:"MM/dd/YYYY"}}</td>
+              <td>{{prog.updatedAt | date:"MM/dd/YYYY"}}</td>
               <td>
                 <button type="button" class="btn btn-primary" (click)="viewProgram(prog.id)"><i class="far fa-eye" id="ic"></i></button>
                 <button type="button" class="btn btn-success" (click)="openEditDialog()"><i class="fas fa-edit" id="ic"></i></button>
