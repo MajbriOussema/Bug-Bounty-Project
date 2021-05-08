@@ -38,4 +38,10 @@ export class ProgramService {
         }
         return await this.programRepository.save(updateProgram);
     }
+
+
+    async deleteProgram(id):Promise<ProgramEntity>{
+        const deletedProgram = await this.programRepository.findOne(+id);
+        return await this.programRepository.remove(deletedProgram);
+    }
 }

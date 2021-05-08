@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class ProgramService {
   api_link1 = 'http://localhost:3000/api/program';
-  api_link2 = 'http://localhost:3000/api/programs/checkPassword';
+  api_link2 = 'http://localhost:3000/api/auth/checkPassword';
   constructor(
     private http: HttpClient
   ) { }
@@ -24,8 +24,7 @@ export class ProgramService {
   checkPassword(companyId: string,password: string){
     let params = new HttpParams()
       .set('companyId',companyId)
-      .set('password',password);
-    return this.http.get<any>(this.api_link2,{params});
+    return this.http.post(this.api_link2,{companyId:companyId,password:password});
   }
   addProgram(form: any){
     const inscopevalues = this.getArray(form,"inScope");
@@ -46,7 +45,7 @@ export class ProgramService {
     const outofscopevalues = this.getArray(form, "outOfScope");
     const severityvalues = this.getArray(form, "severity");
     const link = this.api_link1+'/'+id;
-    return(this.http.post(link, {
+    return(this.http.put(link, {
       name: form.name,
       policy: form.policy,
       company: 'company',
@@ -56,7 +55,7 @@ export class ProgramService {
     }));
   }
 
-  deleteProgram(){
-    //todo
+  deleteProgram(id :any){
+    return this.http.delete(id);
   }
 }
