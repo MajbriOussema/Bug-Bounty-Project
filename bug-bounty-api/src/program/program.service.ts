@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { UserRoleEnum } from 'src/enums/user-role-enum';
 import { Repository } from 'typeorm';
 import { AddProgramDto } from './dto/addProgram.dto';
 import { ProgramEntity } from './entities/program.entity';
@@ -11,8 +12,10 @@ export class ProgramService {
         private programRepository: Repository<ProgramEntity>
     ){}
     async getPrograms(company): Promise<ProgramEntity[]>{
-        
-        return await this.programRepository.find();
+        if(company.role === UserRoleEnum.ADMIN){
+            return await this.programRepository.find();
+        }
+        return await this.programRepository.find({company});
     }
     async addProgram(program: AddProgramDto, company): Promise<Partial<ProgramEntity>> {
         console.log(company);
