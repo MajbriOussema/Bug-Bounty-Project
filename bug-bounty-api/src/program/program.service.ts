@@ -10,11 +10,15 @@ export class ProgramService {
         @InjectRepository(ProgramEntity)
         private programRepository: Repository<ProgramEntity>
     ){}
-    async getPrograms(): Promise<ProgramEntity[]>{
+    async getPrograms(company): Promise<ProgramEntity[]>{
+        
         return await this.programRepository.find();
     }
-    async addProgram(program: AddProgramDto): Promise<ProgramEntity> {
-        return await this.programRepository.save(program);
+    async addProgram(program: AddProgramDto, company): Promise<Partial<ProgramEntity>> {
+        console.log(company);
+        const newProgram = this.programRepository.create(program);
+        newProgram.company = company;
+        return await this.programRepository.save(newProgram);
     }
     async getOneProgram(searchedId : number): Promise<ProgramEntity>{
         return await this.programRepository.findOne({id:searchedId});

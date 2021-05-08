@@ -1,6 +1,7 @@
 import { UserRoleEnum } from "src/enums/user-role-enum";
 import { TimestampEntity } from "src/generics/timestamp.entities";
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { ProgramEntity } from "src/program/entities/program.entity";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 
 @Entity('user')
@@ -42,4 +43,14 @@ export class UserEntity extends TimestampEntity{
         enum: UserRoleEnum,
     })
     role: string;
+
+    @OneToMany(
+        type => ProgramEntity,
+        (program) => program.company,
+        {
+            cascade: true,
+            nullable: true,
+        }
+    )
+    programs: ProgramEntity[];
 }

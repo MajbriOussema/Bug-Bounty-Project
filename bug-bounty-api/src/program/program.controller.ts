@@ -1,9 +1,10 @@
-import {Body, Controller, Delete, Get, Param, Post, Put, UseGuards} from '@nestjs/common';
+import {Body, Controller, Delete, Get, Param, Post, Put, Req, UseGuards} from '@nestjs/common';
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 import { AddProgramDto } from './dto/addProgram.dto';
 import { ProgramEntity } from './entities/program.entity';
 import { ProgramService } from './program.service';
 import {updateProgramDto} from "./dto/updateProgram.dto";
+import { User } from 'src/decorators/user.decorator';
 
 @Controller('program')
 export class ProgramController {
@@ -12,8 +13,10 @@ export class ProgramController {
     ){}
     @Get()
     @UseGuards(JwtAuthGuard)
-    async getAllPrograms() : Promise<ProgramEntity[]>{
-        return await this.programService.getPrograms();
+    async getAllPrograms(
+        @User() user
+    ) : Promise<ProgramEntity[]>{
+        return await this.programService.getPrograms(user);
     }
 
     @Get(':id')
@@ -22,10 +25,12 @@ export class ProgramController {
     }
 
     @Post()
+    @UseGuards(JwtAuthGuard)
     async addProgram(
-        @Body() AddProgramDto: AddProgramDto
-    ): Promise<ProgramEntity>{
-        return await this.programService.addProgram(AddProgramDto);
+        @Body() AddProgramDto: AddProgramDto,
+        @User() user
+    ): Promise<Partial<ProgramEntity>>{
+        return await this.programService.addProgram(AddProgramDto,user);
     }
 
     @Put(':id')

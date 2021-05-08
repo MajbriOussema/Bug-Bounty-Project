@@ -48,7 +48,6 @@ export class ProgramService {
     return(this.http.put(link, {
       name: form.name,
       policy: form.policy,
-      company: 'company',
       inScope: inscopevalues,
       outOfScope: outofscopevalues,
       severity: severityvalues

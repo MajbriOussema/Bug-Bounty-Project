@@ -1,4 +1,5 @@
-import { Column, CreateDateColumn, DeleteDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { UserEntity } from "src/auth/entities/user.entity";
+import { Column, CreateDateColumn, DeleteDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 @Entity('program')
 export class ProgramEntity {
@@ -7,9 +8,6 @@ export class ProgramEntity {
 
     @Column()
     name: string;
-
-    @Column()
-    company: string;
 
     @Column()
     policy: string;
@@ -34,5 +32,14 @@ export class ProgramEntity {
     @Column("simple-array",{ nullable: true })
     outOfScope:string[];
 
-
+    @ManyToOne(
+        type => UserEntity,
+        (user) => user.programs,
+        {
+            cascade: ['insert','update'],
+            nullable: true,
+            eager: true
+        }
+    )
+    company: UserEntity;
 }
