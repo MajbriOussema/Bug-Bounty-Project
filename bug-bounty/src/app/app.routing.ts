@@ -10,9 +10,9 @@ import { DashboardComponent } from "./dashboard/dashboard.component";
 
 import { DirectoryComponent } from "./directory/directory.component";
 import { ErrorComponent } from "./error/error.component";
-import { CompanyGuard } from "./guards/company.guard";
 import { LoginGuard } from "./guards/login.guard";
 import { LogoutGuard } from "./guards/logout.guard";
+import { RoleGuard } from "./guards/role.guard";
 import { HacktivityComponent } from "./hacktivity/hacktivity.component";
 import { HomeComponent } from "./home/home.component";
 import { ProfileComponent } from "./profile/profile.component";
@@ -28,7 +28,7 @@ const APP_ROUTES : Routes = [
     {path: 'error', component: ErrorComponent},
     {path : 'profile' , component: ProfileComponent, canActivate: [LoginGuard]},
     {path: 'program', children: [
-        {path: '',component: ProgramComponent, canActivate: [LoginGuard]},
+        {path: '',component: ProgramComponent, canActivate: [LoginGuard,RoleGuard],data:{expectedRole: 'company'}},
         {path: ':id',component:SpecificProgramComponent}
     ]},
     {path: 'support', component: SupportComponent},

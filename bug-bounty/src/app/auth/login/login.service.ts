@@ -23,7 +23,7 @@ export class LoginService {
     if(!!token){
       try{
         const state = !this.jwtHelper.isTokenExpired(token);
-        return true;
+        return state;
       }
       catch (e){
         this.logout();
