@@ -17,13 +17,21 @@ export class UserEntity extends TimestampEntity{
         length: 50
     })
     username: string;
-    @Column()
+    @Column({
+        default:null
+    })
     firstname: string;
-    @Column()
+    @Column({
+        default:null
+    })
     lastname: string;
-    @Column()
+    @Column({
+        default:null
+    })
     company: string;
-    @Column()
+    @Column({
+        default:null
+    })
     country: string;
     @Column()
     password: string;

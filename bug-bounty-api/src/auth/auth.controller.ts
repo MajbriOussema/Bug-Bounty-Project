@@ -29,8 +29,8 @@ export class AuthController {
     @Post('register/company')
     registerCompany(
         @Body() data: AddCompanyDto
-    ){
+    ):Promise<Partial<UserEntity>>{
         console.log("Company registration");
-        console.log(data);
+        return this.authService.registerCompany(data);
     }
 }

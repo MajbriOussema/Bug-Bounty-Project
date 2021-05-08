@@ -27,6 +27,7 @@ import { DialogSubmit, SpecificProgramComponent } from './specific-program/speci
 import { LoginInterceptorProvider } from './interceptors/login.interceptor';
 import { HacktivityComponent } from './hacktivity/hacktivity.component';
 import { DirectoryComponent } from './directory/directory.component';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { DirectoryComponent } from './directory/directory.component';
     SupportComponent,
     SpecificProgramComponent,
     HacktivityComponent,
-    DirectoryComponent
+    DirectoryComponent,
+    
   ],
   imports: [
     BrowserModule,

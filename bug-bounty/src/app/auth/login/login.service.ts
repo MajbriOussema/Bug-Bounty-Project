@@ -1,13 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
   api_link = 'http://localhost:3000/api/auth/login';
+  jwtHelper = new JwtHelperService();
+
   constructor(
-    private http: HttpClient,
+    private http: HttpClient
   ) { }
   login(informations: any){
     return this.http.post(this.api_link,informations);
@@ -16,7 +19,17 @@ export class LoginService {
     localStorage.removeItem('token');
   }
   isLoggedIn(){
-    const state = !!localStorage.getItem('token');
-    return (state);
+    const token = localStorage.getItem('token');
+    if(!!token){
+      try{
+        const state = !this.jwtHelper.isTokenExpired(token);
+        return true;
+      }
+      catch (e){
+        this.logout();
+      }
+    }
+    return false;
+    
   }
 }
