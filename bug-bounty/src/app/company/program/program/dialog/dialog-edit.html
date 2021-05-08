@@ -24,7 +24,9 @@
                 <div class="form-group"><label style="color: #ffffff" for="inscope"><strong>In Scope</strong></label>
                   <div *ngFor="let f of inScopes;let i = index">
                     <input [(ngModel)]="f.name" style="height:42px;width:400px;padding-right:0" type="text" placeholder="" name="inScope[{{i}}]">
+
                     <button type="button" class="btn btn-danger btn-sm" style="height:42px;margin-left: 0;width:30px" *ngIf="inScopes.length>1" (click)="deleteInScope(f)"><i class="fas fa-trash-alt"></i></button>
+
                   </div>
                   <button type="button" id="button1" class="btn btn-info btn-sm" style="height:42px;margin-top:10px" (click)="addInScopeField()">Add more In Scopes</button>
 

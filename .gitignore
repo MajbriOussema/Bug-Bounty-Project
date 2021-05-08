@@ -3,3 +3,4 @@
 /bug-bounty-api/dist
 /bug-bounty/dist
 /bug-bounty-api/.env
+.idea

@@ -4,11 +4,11 @@
         <div class="illustration">
             <h1 style="color: #ffffff;">Hacker Registration</h1>
         </div>
-    
+
         <div class="form-group"><select required ngModel #country="ngModel" class="form-control" id="country" name="country">
             <option value="0">Select your Country</option>
             <option value="Afganistan">Afghanistan</option>
-            
+
          </select>
         </div>
         <div *ngIf="(country.value == 0 && country.touched)" style="color:#e19c05" class="ml-2">
