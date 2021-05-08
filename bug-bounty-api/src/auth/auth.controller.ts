@@ -11,18 +11,11 @@ export class AuthController {
         private authService: AuthService
     ){}
     @Post('register/hacker')
-    registerHacker(
-        @Body() data: AddHackerDto
-    ): Promise<Partial<UserEntity>>{
-        console.log("Hacker registration");
-        console.log(data);
+    registerHacker(@Body() data: AddHackerDto): Promise<Partial<UserEntity>>{
         return this.authService.registerHacker(data);
     }
     @Post('login')
-    login(
-        @Body() data: LoginDto
-    ){
-        console.log(data);
+    login(@Body() data: LoginDto) {
         return this.authService.login(data);
     }
 
@@ -33,4 +26,5 @@ export class AuthController {
         console.log("Company registration");
         return this.authService.registerCompany(data);
     }
+
 }
