@@ -18,7 +18,6 @@ export class ProgramService {
         return await this.programRepository.find({company});
     }
     async addProgram(program: AddProgramDto, company): Promise<Partial<ProgramEntity>> {
-        console.log(company);
         const newProgram = this.programRepository.create(program);
         newProgram.company = company;
         return await this.programRepository.save(newProgram);

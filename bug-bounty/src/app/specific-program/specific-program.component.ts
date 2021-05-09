@@ -24,6 +24,7 @@ export class SpecificProgramComponent implements OnInit {
     )
     this.SpecificProgramService.getProgramInfo().subscribe(
       (response:any)=>{
+        console.log(response)
         this.program = response;
       },
       (error:any)=>{
@@ -31,6 +32,8 @@ export class SpecificProgramComponent implements OnInit {
       }
     );
   }
+
+
   openSubmitDialog(){
     const dialogRef = this.dialog.open(DialogSubmit, {
       width: '900px',

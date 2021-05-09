@@ -31,9 +31,9 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr *ngFor="let sev of program.severity;let inscope of program.inScope">
+                      <tr *ngFor="let inscope of program.inScope;let i = index">
                         <td>{{inscope}}</td>
-                        <td>{{sev}}</td>
+                        <td>{{program.severity[i]}}</td>
                       </tr>
                     </tbody>
                   </table>
