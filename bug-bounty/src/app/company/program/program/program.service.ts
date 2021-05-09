@@ -30,7 +30,7 @@ export class ProgramService {
     const inscopevalues = this.getArray(form,"inScope");
     const outofscopevalues = this.getArray(form,"outOfScope");
     const severityvalues = this.getArray(form,"severity");
-
+    console.log(inscopevalues)
     return this.http.post(this.api_link1,{
       name:form.name,
       policy:form.policy,

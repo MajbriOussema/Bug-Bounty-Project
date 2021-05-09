@@ -1,4 +1,4 @@
-import {Body, Controller, Delete, Get, Param, Post, Put, Req, UseGuards} from '@nestjs/common';
+import {Body, Controller, Delete, Get, Param, Post, Put, UseGuards} from '@nestjs/common';
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 import { AddProgramDto } from './dto/addProgram.dto';
 import { ProgramEntity } from './entities/program.entity';

@@ -2,7 +2,7 @@
     <form #prog="ngForm" (ngSubmit)="updateProgram(prog,data.program_id)">
         <div  class="form-row">
             <div class="col">
-                <div class="form-group"><label style="color: #ffffff" for="program name"><strong>Program Name</strong></label>
+                <div class="form-group"><label style="color: #ffffff" for="program"><strong>Program Name</strong></label>
                   <input required [(ngModel)] = "model.prog_name" #prog_name="ngModel" class="form-control" type="text" id="prog_name" placeholder="Program Name" name="name"></div>
                 </div>
         </div>
