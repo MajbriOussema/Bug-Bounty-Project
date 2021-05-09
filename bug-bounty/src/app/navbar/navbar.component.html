@@ -8,7 +8,7 @@
                 <li *ngIf="!lgService.isLoggedIn()" class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" [routerLink]="['register']" routerLinkActive="active">Sign Up</a></li>
                 <li *ngIf="!lgService.isLoggedIn()" class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" [routerLink]="['login']" routerLinkActive="active">Log In</a></li>
                 <li *ngIf="lgService.isLoggedIn()" class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"  [routerLink]="['program']" routerLinkActive="active">Programs</a></li>
-                
+                <li *ngIf="lgService.isLoggedIn()" class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"  [routerLink]="['activity']" routerLinkActive="active"> <i class="far fa-bell"></i> &nbsp;Activity</a></li>
                 <div class="dropdown" style="text-align: left;margin-top: 5px;" *ngIf="lgService.isLoggedIn()">
                     <a href="#" id="imageDropdown" data-toggle="dropdown">
                         <img class="img-responsive rounded" style="height:40px;width:40px;" src="assets/img/profile_image.png">

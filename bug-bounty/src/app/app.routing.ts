@@ -1,4 +1,5 @@
 import {Routes, RouterModule} from "@angular/router";
+import { ActivityComponent } from "./activity/activity.component";
 import { AppComponent } from './app.component';
 import { LoginComponent} from './auth/login/login.component';
 import { RegcompanyComponent } from "./auth/register/regcompany/regcompany.component";
@@ -32,6 +33,7 @@ const APP_ROUTES : Routes = [
         {path: ':id',component:SpecificProgramComponent}
     ]},
     {path: 'support', component: SupportComponent},
+    {path: 'activity', component: ActivityComponent},
     {path: 'register', children:[
         {path: '', component: RegisterComponent},
         {path: 'hacker', component: ReghackerComponent},

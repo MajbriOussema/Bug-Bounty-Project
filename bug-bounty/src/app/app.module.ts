@@ -28,6 +28,7 @@ import { LoginInterceptorProvider } from './interceptors/login.interceptor';
 import { HacktivityComponent } from './hacktivity/hacktivity.component';
 import { DirectoryComponent } from './directory/directory.component';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { ActivityComponent } from './activity/activity.component';
 
 
 @NgModule({
@@ -52,6 +53,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
     SpecificProgramComponent,
     HacktivityComponent,
     DirectoryComponent,
+    ActivityComponent,
     
   ],
   imports: [
