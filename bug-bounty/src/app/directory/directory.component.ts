@@ -15,53 +15,14 @@ export interface Programs{
 })
 
 export class DirectoryComponent {
-  programs : Programs[] = [
-    {
-      name : "p1",
-      reports : 15,
-      bounties_min : 100,
-      bounties_avg : 250
-    },
-    {
-      name : "p2",
-      reports : 1,
-      bounties_min : 1000,
-      bounties_avg : 2000
-    },
-    {
-      name : "p3",
-      reports : 300,
-      bounties_min : 5,
-      bounties_avg : 10
-    }
-  ];
-
-  sortedData: Programs[];
-
+  programs: any = [];
   constructor() { 
-    this.sortedData = this.programs.slice();
+    this.programs.push("prog1");
+    this.programs.push("prog2");
+    this.programs.push("prog3");
+    this.programs.push("prog4");
   }
   
-  sortData(sort: Sort) {
-    const data = this.programs.slice();
-    if (!sort.active || sort.direction === '') {
-      this.sortedData = data;
-      return;
-    }
-
-    this.sortedData = data.sort((a, b) => {
-      const isAsc = sort.direction === 'asc';
-      switch (sort.active) {
-        case 'name': return compare(a.name, b.name, isAsc);
-        case 'reports': return compare(a.reports, b.reports, isAsc);
-        case 'bounties_min': return compare(a.bounties_min, b.bounties_min, isAsc);
-        case 'bounties_avg': return compare(a.bounties_avg, b.bounties_avg, isAsc);
-        default: return 0;
-      }
-    });
-  }
+  
 }
 
-function compare(a: number | string, b: number | string, isAsc: boolean) {
-  return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
-}

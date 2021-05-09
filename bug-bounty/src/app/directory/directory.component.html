@@ -1,31 +1,54 @@
-<div class="card-body">
-    <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
-        <table class="table my-0" id="dataTable" matSort (matSortChange)="sortData($event)">
-            <thead>
-                <tr>
-                    <th mat-sort-header="name">Program</th>
-                    <th mat-sort-header="reports">Reports</th>
-                    <th mat-sort-header="bounties_min">Bounties Minimum</th>
-                    <th mat-sort-header="bounties_avg">Bounties Average</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let program of sortedData">
-                    <td>{{program.name}}</td>
-                    <td>{{program.reports}}</td>
-                    <td>{{program.bounties_min}}$</td>
-                    <td>{{program.bounties_avg}}$</td>
+<div>
+    <div class="row" id="mainTopRow">
+        <div class="col">
+            <h1>Find new hackable targets</h1>
+        </div>
+        <div class="col-3 form-outline">
+            <input type="search" id="form1" class="form-control" placeholder="Search" aria-label="Search" />
+          </div>
+    </div>
+    <div class="row" id="mainBotRow"> 
+        <div class="col-3" id="leftCol">
+            <div id="head">Type</div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+                <label class="form-check-label" for="flexRadioDefault1">
+                  All
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                <label class="form-check-label" for="flexRadioDefault2">
+                  Published
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                <label class="form-check-label" for="flexRadioDefault2">
+                  Disclosed
+                </label>
+            </div>
+        </div>
+        <div class="col" id="mainCol">
+            <table class="table ">
+                <thead class="thead-dark">
+                    <tr>
+                        <td>Program name</td>
+                        <td>Launched on</td>
+                        <td>Reports</td>
+                        <td>Average bounties</td>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let program of programs" id="tRow">
+                    <td>Program 1</td>
+                    <td>25/05/2019</td>
+                    <td>19</td>
+                    <td>200$</td>
                 </tr>
             </tbody>
-            <tfoot>
-                <tr>
-                    <td><strong>Program</strong></td>
-                    <td><strong>Reports</strong></td>
-                    <td><strong>Bounties Minimum</strong></td>
-                    <td><strong>Bounties Average</strong></td>
-                </tr>
-            </tfoot>
-        </table>
+            </table>
+        </div>
     </div>
+    
 </div>
-
