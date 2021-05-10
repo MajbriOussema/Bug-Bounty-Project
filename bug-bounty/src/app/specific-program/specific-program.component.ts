@@ -36,7 +36,7 @@ export class SpecificProgramComponent implements OnInit {
 
   openSubmitDialog(){
     const dialogRef = this.dialog.open(DialogSubmit, {
-      width: '900px',
+      width: '700px',
       height: '500px',
     });
 
@@ -48,6 +48,7 @@ export class SpecificProgramComponent implements OnInit {
 @Component({
   selector:'dialog-submit',
   templateUrl: './dialog/dialog-submit.html',
+  styleUrls: ['./dialog/dialog-submit.css']
 })
 export class DialogSubmit{
   constructor(

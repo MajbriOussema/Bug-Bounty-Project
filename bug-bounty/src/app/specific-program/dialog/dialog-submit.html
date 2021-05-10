@@ -1,34 +1,58 @@
 <div>
   <form #report="ngForm">
-    <div class="form-row" >
-        <div class="form-group">
-           <h1 style="color: #ffffff">
-             <strong>Submit Report</strong>
-           </h1>
+    <div class="row" >
+      <div class="col-9">
+        <h1 style="color:#eff304">
+          Submit Report
+      </h1>
+      </div>  
+      
+    </div>
+    <div class="row" style="margin-bottom: 10px;">
+      <div class="col" style="text-align: center;margin-top: 10px;">
+        <label for="asset" style="color:#fff"><strong>Asset</strong></label>
+      </div>
+      <div class="col-9">
+        <select class="form-control select" names="asset">
+          <option>AAAA</option>
+        </select>
       </div>
     </div>
-    <div class="form-row">
-      <label style="color: #ffffff">
-        <strong>
-          Asset
-        </strong>
-      </label>
-      <input required class="form-control" type="text" id="asset" placeholder="Asset" name="asset">
+    <div class="row" style="margin-bottom: 10px;">
+      <div class="col-3" style="text-align: center;margin-top: 10px;">
+        <label for="asset" style="color:#fff"><strong>Weakness</strong></label>
+      </div>
+      <div class="col-9">
+        <select class="form-control select" names="asset">
+          <option>AAAA</option>
+        </select>
+      </div>
     </div>
-    <div class="form-row col-5">
-      <label style="color: #ffffff">
-        <strong>
-          Weakness
-        </strong>
-      </label>
-      <select class="form-control select" style="margin-top:10px"  name="weakness">
-        <option>XSS</option>
-        <option></option>
-        <option></option>
-        <option></option>
-        <option></option>
-        <option></option>
-      </select>
+    <div class="row"  style="margin-bottom: 10px;">
+      <div class="col" style="text-align: center;margin-top: 10px;">
+        <label for="severity" style="color:#fff"><strong>Severity</strong></label>
+      </div>
+      <div class="col-9">
+        <select class="form-control select" name="severity">
+          <option>AAAA</option>
+        </select>
+      </div>
+    </div>
+    <div class="row"  style="margin-bottom: 20px;">
+      <div class="col" style="text-align: center;margin-top: 10px;">
+        <label for="severity" style="color:#fff"><strong>Proof of concept</strong></label>
+      </div>
+      <div class="col-9">
+        <div class="custom-file">
+          <input type="file" class="custom-file-input form-control" id="customFile">
+          <label class="custom-file-label" for="customFile">Choose file</label>
+        </div>
+      </div>
+    </div>
+    <div class="row"  style="margin-bottom: 10px;" id="button1">
+      <div class="col-7">
+        <button class="form-control" >Submit</button>
+      </div>
     </div>
   </form>
 </div>

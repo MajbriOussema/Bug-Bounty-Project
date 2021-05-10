@@ -1,0 +1,23 @@
+button {
+    background-color: #141d2b;
+    border-color: #9fef00;
+    box-shadow: 0 0 10px #9fef00;
+    color:#fff;
+}
+button:hover{
+    background-color: #141d2b;
+    border-color: #9fef00;
+    box-shadow: 0 0 15px #9fef00
+}
+button:focus{
+    background-color: #141d2b;
+    border-color: #9fef00;
+    box-shadow: 0 0 15px #9fef00;
+    color:#fff;
+  }
+#button1{
+    max-width: 300px;
+    width:300px;
+    margin: 0px auto;
+    position: relative;
+}
