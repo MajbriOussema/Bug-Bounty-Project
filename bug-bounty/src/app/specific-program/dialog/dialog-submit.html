@@ -1,5 +1,5 @@
 <div>
-  <form #report="ngForm">
+  <form #reportForm="ngForm" (submit)="submitReport(reportForm)">
     <div class="row" >
       <div class="col-9">
         <h1 style="color:#eff304">
@@ -13,8 +13,9 @@
         <label for="asset" style="color:#fff"><strong>Asset</strong></label>
       </div>
       <div class="col-9">
-        <select class="form-control select" names="asset">
+        <select class="form-control select" name="asset" ngModel #asset="ngModel">
           <option>AAAA</option>
+          <option>AAAAAA</option>
         </select>
       </div>
     </div>
@@ -23,8 +24,8 @@
         <label for="asset" style="color:#fff"><strong>Weakness</strong></label>
       </div>
       <div class="col-9">
-        <select class="form-control select" names="asset">
-          <option>AAAA</option>
+        <select class="form-control select" name="weakness" ngModel #weakness="ngModel"> 
+          <option>BBBB</option>
         </select>
       </div>
     </div>
@@ -33,8 +34,8 @@
         <label for="severity" style="color:#fff"><strong>Severity</strong></label>
       </div>
       <div class="col-9">
-        <select class="form-control select" name="severity">
-          <option>AAAA</option>
+        <select class="form-control select" name="severity" ngModel #severity="ngModel">
+          <option>CCC</option>
         </select>
       </div>
     </div>
@@ -44,7 +45,7 @@
       </div>
       <div class="col-9">
         <div class="custom-file">
-          <input type="file" class="custom-file-input form-control" id="customFile">
+          <input type="file" class="custom-file-input form-control" id="customFile" name="report" (change)="handleFileInput($event.target.files)" ngModel #report="ngModel" />
           <label class="custom-file-label" for="customFile">Choose file</label>
         </div>
       </div>
@@ -54,5 +55,6 @@
         <button class="form-control" >Submit</button>
       </div>
     </div>
+    
   </form>
 </div>

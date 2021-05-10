@@ -8,10 +8,14 @@ import { ProgramModule } from './program/program.module';
 import { AuthModule } from './auth/auth.module';
 import { ReportModule } from './report/report.module';
 import { HistoryModule } from './history/history.module';
+import { MulterModule } from '@nestjs/platform-express';
 
 dotenv.config()
 @Module({
   imports: [
+    MulterModule.register({
+      dest: './uploads'
+    }),
     ConfigModule.forRoot({
       isGlobal: true,
     }),

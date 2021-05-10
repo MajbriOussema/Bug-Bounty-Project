@@ -3,6 +3,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 import { DialogData } from '../company/program/program/program.component';
 import {ActivatedRoute} from "@angular/router";
 import {SpecificProgramService} from "./specific-program.service";
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-specific-program',
@@ -51,11 +52,26 @@ export class SpecificProgramComponent implements OnInit {
   styleUrls: ['./dialog/dialog-submit.css']
 })
 export class DialogSubmit{
+  private fileToUpload: File;
   constructor(
     public dialogRef: MatDialogRef<DialogSubmit>,
+    private specificProgramService: SpecificProgramService,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 
   onNoClick(): void {
     this.dialogRef.close();
+  }
+  handleFileInput(files: FileList){
+    this.fileToUpload = files.item(0);
+  }
+  submitReport(form: NgForm){
+    this.specificProgramService.submitReport(form.value,this.fileToUpload).subscribe(
+      (response: any) => {
+        
+      },
+      (error: any) => {
+
+      }
+    );
   }
 }
