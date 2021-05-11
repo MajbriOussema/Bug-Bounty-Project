@@ -20,6 +20,7 @@ export class ProgramService {
     async addProgram(program: AddProgramDto, company): Promise<Partial<ProgramEntity>> {
         const newProgram = this.programRepository.create(program);
         newProgram.company = company;
+        console.log(newProgram);
         return await this.programRepository.save(newProgram);
     }
     async getOneProgram(searchedId : number): Promise<ProgramEntity>{

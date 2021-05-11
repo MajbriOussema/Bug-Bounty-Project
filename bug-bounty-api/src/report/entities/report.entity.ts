@@ -1,7 +1,9 @@
 import { UserEntity } from "src/auth/entities/user.entity";
 import { ReportStatusEnum } from "src/enums/report-status-enum";
 import { TimestampEntity } from "src/generics/timestamp.entities";
-import { Entity, PrimaryGeneratedColumn, Column, OneToOne, ManyToOne } from "typeorm";
+import { ProgramEntity } from "src/program/entities/program.entity";
+import { Entity, PrimaryGeneratedColumn, Column, OneToOne, ManyToOne, OneToMany } from "typeorm";
+import { ReportFileInterface } from "../interfaces/report-file.interface";
 
 
 @Entity('report')
@@ -15,6 +17,9 @@ export class ReportEntity extends TimestampEntity{
     @Column()
     asset: string;
 
+    @Column()
+    severity: string;
+
     @Column({
         default:ReportStatusEnum.PENDING
     })
@@ -25,6 +30,15 @@ export class ReportEntity extends TimestampEntity{
     })
     disclosure: boolean;
 
+    @Column({
+        default:null
+    })
+    reportFileName: string;
+
+    @Column({
+        default:null
+    })
+    reportFilePath: string;
 
     @ManyToOne(
         type => UserEntity,
@@ -39,7 +53,7 @@ export class ReportEntity extends TimestampEntity{
 
     @ManyToOne(
         type => UserEntity,
-        (hacker) => hacker.reportsforcompany,
+        (company) => company.reportsforcompany,
         {
             cascade: ['insert','update'],
             nullable: true,
@@ -50,13 +64,23 @@ export class ReportEntity extends TimestampEntity{
 
     @ManyToOne(
         type => UserEntity,
-        (hacker) => hacker.reportsfortriager,
+        (triager) => triager.reportsfortriager,
+        {
+            cascade: ['insert','update'],
+            nullable: true,
+            eager: true
+        },
+    )
+    triager: UserEntity;
+
+    @ManyToOne(
+        type => ProgramEntity,
+        (program) => program.reports,
         {
             cascade: ['insert','update'],
             nullable: true,
             eager: true
         }
     )
-    triager: UserEntity;
-
+   program: ProgramEntity;
 }

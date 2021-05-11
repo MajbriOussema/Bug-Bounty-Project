@@ -1,5 +1,6 @@
 import { UserEntity } from "src/auth/entities/user.entity";
-import { Column, CreateDateColumn, DeleteDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { ReportEntity } from "src/report/entities/report.entity";
+import { Column, CreateDateColumn, DeleteDateColumn, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 @Entity('program')
 export class ProgramEntity {
@@ -42,4 +43,14 @@ export class ProgramEntity {
         }
     )
     company: UserEntity;
+
+    @OneToMany(
+        type => ReportEntity,
+        (report) => report.program,
+        {
+            cascade: true,
+            nullable: true,
+        }
+    )
+    reports: ReportEntity[];
 }
