@@ -13,46 +13,61 @@
         <label for="asset" style="color:#fff"><strong>Asset</strong></label>
       </div>
       <div class="col-9">
-        <select class="form-control select" name="asset" ngModel #asset="ngModel">
+        <select required class="form-control select" name="asset" ngModel #asset="ngModel">
           <option>AAAA</option>
           <option>AAAAAA</option>
         </select>
       </div>
+    </div>
+    <div *ngIf="(asset.value == 0 && asset.touched)" style="color:#e19c05" class="ml-2">
+      You must choose an asset
     </div>
     <div class="row" style="margin-bottom: 10px;">
       <div class="col-3" style="text-align: center;margin-top: 10px;">
         <label for="asset" style="color:#fff"><strong>Weakness</strong></label>
       </div>
       <div class="col-9">
-        <select class="form-control select" name="weakness" ngModel #weakness="ngModel"> 
+        <select required class="form-control select" name="weakness" ngModel #weakness="ngModel"> 
           <option>BBBB</option>
         </select>
       </div>
+    </div>
+    <div *ngIf="(weakness.value == 0 && weakness.touched)" style="color:#e19c05" class="ml-2">
+      You must choose a weakness type
     </div>
     <div class="row"  style="margin-bottom: 10px;">
       <div class="col" style="text-align: center;margin-top: 10px;">
         <label for="severity" style="color:#fff"><strong>Severity</strong></label>
       </div>
       <div class="col-9">
-        <select class="form-control select" name="severity" ngModel #severity="ngModel">
+        <select required class="form-control select" name="severity" ngModel #severity="ngModel">
           <option>CCC</option>
         </select>
       </div>
     </div>
-    <div class="row"  style="margin-bottom: 20px;">
+    <div *ngIf="(severity.value == 0 && severity.touched)" style="color:#e19c05" class="ml-2">
+      You must choose a severity
+    </div>
+    <div class="row"  style="margin-bottom: 10px;">
       <div class="col" style="text-align: center;margin-top: 10px;">
         <label for="severity" style="color:#fff"><strong>Proof of concept</strong></label>
       </div>
       <div class="col-9">
         <div class="custom-file">
-          <input type="file" class="custom-file-input form-control" id="customFile" name="report" (change)="handleFileInput($event.target.files)" ngModel #report="ngModel" />
+          <input required type="file" class="custom-file-input form-control" id="customFile" name="report" (change)="handleFileInput($event.target.files)" ngModel #report="ngModel" />
           <label class="custom-file-label" for="customFile">Choose file</label>
         </div>
       </div>
     </div>
+    <div *ngIf="(report.value == 0 && report.touched)" style="color:#e19c05" class="ml-2 mb-2">
+      You must upload your report (PDF format)
+    </div>
+    <div *ngIf="triggerError()" style="color:red" class="ml-2 mb-3">
+      {{serverError}}
+    </div>
     <div class="row"  style="margin-bottom: 10px;" id="button1">
       <div class="col-7">
-        <button class="form-control" >Submit</button>
+        <button class="form-control" [disabled]="reportForm.invalid">Submit</button>
       </div>
     </div>
     

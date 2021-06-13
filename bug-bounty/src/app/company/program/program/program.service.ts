@@ -54,7 +54,10 @@ export class ProgramService {
     }));
   }
 
-  deleteProgram(id :any){
-    return this.http.delete(id);
+  deleteProgram(form: any,id :any){
+    console.log(form);
+    return this.http.delete(this.api_link1+"/"+id, {
+      params: {password : form.password}
+    });
   }
 }

@@ -52,6 +52,7 @@ export class SpecificProgramComponent implements OnInit {
   styleUrls: ['./dialog/dialog-submit.css']
 })
 export class DialogSubmit{
+  serverError: string;
   private fileToUpload: File;
   constructor(
     public dialogRef: MatDialogRef<DialogSubmit>,
@@ -64,14 +65,25 @@ export class DialogSubmit{
   handleFileInput(files: FileList){
     this.fileToUpload = files.item(0);
   }
+  triggerError(){
+    if(!!this.serverError){
+      return true;
+    }
+    return false;
+  }
   submitReport(form: NgForm){
-    this.specificProgramService.submitReport(form.value,this.fileToUpload).subscribe(
-      (response: any) => {
-        
-      },
-      (error: any) => {
-
-      }
-    );
+    if(this.fileToUpload.type === "application/pdf"){
+      this.specificProgramService.submitReport(form.value,this.fileToUpload).subscribe(
+        (response: any) => {
+          this.dialogRef.close();
+        },
+        (error: any) => {
+          this.serverError = error.error.message;
+        }
+      );
+    }
+    else {
+      this.serverError = "report must be uploaded as PDF";
+    }
   }
 }

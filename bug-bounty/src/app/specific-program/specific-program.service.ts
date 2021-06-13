@@ -16,6 +16,7 @@ export class SpecificProgramService {
     const api_link = 'http://localhost:3000/api/program/'+this.id;
     return this.http.get(api_link)
   }
+  
   submitReport(data,file:File){
     const api_link = "http://localhost:3000/api/report/submit";
     const programId = this.router.url.split("/")[2];
@@ -24,7 +25,7 @@ export class SpecificProgramService {
     formData.append('asset',data.asset);
     formData.append('weakness',data.weakness);
     formData.append('severity',data.severity);
-    formData.append('id',programId);
+    formData.append('programId',programId);
     return this.http.post(api_link,formData);
   }
 }

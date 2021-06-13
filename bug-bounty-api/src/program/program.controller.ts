@@ -1,4 +1,4 @@
-import {Body, Controller, Delete, Get, Param, Post, Put, UseGuards} from '@nestjs/common';
+import {Body, Controller, Delete, Get, Param, Post, Put, Query, UseGuards} from '@nestjs/common';
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 import { AddProgramDto } from './dto/addProgram.dto';
 import { ProgramEntity } from './entities/program.entity';
@@ -18,7 +18,10 @@ export class ProgramController {
     ) : Promise<ProgramEntity[]>{
         return await this.programService.getPrograms(user);
     }
-
+    @Get('directory')
+    async getDirectory(): Promise<ProgramEntity[]>{
+        return await this.programService.getDirectory();
+    }
     @Get(':id')
     async getOneProgram(@Param() params) : Promise<ProgramEntity>{
         return await this.programService.getOneProgram(+params.id);
@@ -34,17 +37,25 @@ export class ProgramController {
     }
 
     @Put(':id')
+    @UseGuards(JwtAuthGuard)
     async updateProgram(
         @Param() params,
-        @Body() updateProgramDto: updateProgramDto
+        @Body() updateProgramDto: updateProgramDto,
+        @User() company,
     ): Promise<ProgramEntity>{
-        return await this.programService.updateProgram(params.id,updateProgramDto);
+        return await this.programService.updateProgram(params.id,updateProgramDto,company);
     }
 
 
     @Delete(":id")
-    async deleteProgram(@Param() params): Promise<ProgramEntity>{
-        return await this.programService.deleteProgram(params.id);
+    @UseGuards(JwtAuthGuard)
+    async deleteProgram(
+        @Query() q,
+        @Param() params,
+        @User() user
+    ): Promise<Partial<ProgramEntity>>{
+        console.log(q);
+        return await this.programService.deleteProgram(q.password,params.id,user);
     }
 
 }

@@ -1,0 +1,17 @@
+#button1{
+    background-color: #1a2332;
+    border: 1px solid #9fef00;
+  }
+  #button2{
+    background-color: rgb(89, 189, 235);
+    border: 4px rgb(89, 189, 235) solid;
+    box-shadow:6px 6px 4px rgb(132, 218, 240) inset ;
+  
+  }
+  #buttontrash{
+    background-color:transparent;
+    border:none;
+  }
+  #buttontrash:hover{
+    color:red;
+  }

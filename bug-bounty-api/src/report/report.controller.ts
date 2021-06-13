@@ -21,7 +21,7 @@ export class ReportController {
         const data: SubmitReportDto = body;
         data.reportFileName = file.originalname;
         data.reportFilePath = file.path;
-        return this.reportService.submitReport(body.id,data,user);
+        return this.reportService.submitReport(body.programId,data,user);
     }
 
 }

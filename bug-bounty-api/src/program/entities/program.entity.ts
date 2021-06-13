@@ -1,10 +1,12 @@
 import { UserEntity } from "src/auth/entities/user.entity";
+import { TimestampEntity } from "src/generics/timestamp.entities";
 import { ReportEntity } from "src/report/entities/report.entity";
-import { Column, CreateDateColumn, DeleteDateColumn, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Column, CreateDateColumn, DeleteDateColumn, Entity, ManyToOne, OneToMany, PrimaryColumn, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 @Entity('program')
-export class ProgramEntity {
+export class ProgramEntity extends TimestampEntity{
     @PrimaryGeneratedColumn()
+    @PrimaryColumn()
     id: number;
 
     @Column()
@@ -12,17 +14,6 @@ export class ProgramEntity {
 
     @Column()
     policy: string;
-
-    @CreateDateColumn({
-        update: false,
-    })
-    createdAt: Date;
-
-    @UpdateDateColumn()
-    updatedAt: Date;
-
-    @DeleteDateColumn()
-    deletedAt: Date;
 
     @Column("simple-array",{ nullable: true })
     inScope:string[];
@@ -43,7 +34,10 @@ export class ProgramEntity {
         }
     )
     company: UserEntity;
-
+    @Column({
+        default: 0
+    })
+    numberOfReports: number;
     @OneToMany(
         type => ReportEntity,
         (report) => report.program,

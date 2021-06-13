@@ -126,20 +126,28 @@ export class ProgramComponent implements OnInit {
 export class DialogDelete{
   constructor(
     private programService: ProgramService,
+    private router:Router,
     public dialogRef: MatDialogRef<DialogDelete>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
-
+  serverError: string;
   onNoClick(): void {
     this.dialogRef.close();
   }
+  triggerError(){
+    if(!!this.serverError){
+      return true;
+    }
+    return false;
+  }
   confirmDelete(formulaire: NgForm,id:any){
     let token = localStorage.getItem('token');
-    this.programService.deleteProgram(id).subscribe(
+    this.programService.deleteProgram(formulaire.value,id).subscribe(
       (response) => {
-        console.log("deleted")
+        this.dialogRef.close();
+        this.router.navigate(['directory'])
       },
       (error)=>{
-          console.log(error)
+          this.serverError = "Password incorrecte";
       }
     );
   }
@@ -147,6 +155,7 @@ export class DialogDelete{
 @Component({
   selector:'dialog-edit',
   templateUrl: './dialog/dialog-edit.html',
+  styleUrls: ['./dialog/dialog-edit.css']
 })
 export class DialogEdit{
   model: any = {};

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Sort} from '@angular/material/sort';
+import { DirectoryService } from './directory.service';
 
 export interface Programs{
   name: string,
@@ -16,13 +17,20 @@ export interface Programs{
 
 export class DirectoryComponent {
   programs: any = [];
-  constructor() { 
-    this.programs.push("prog1");
-    this.programs.push("prog2");
-    this.programs.push("prog3");
-    this.programs.push("prog4");
+  constructor(
+    private directoryService: DirectoryService,
+  ) { 
   }
-  
+  ngOnInit(): void {
+    this.directoryService.getDirectoryPrograms().subscribe(
+      (response: any) => {
+        this.programs = response;
+      },
+      (error: any) => {
+        console.log("server error");
+      }
+    );
+  }
   
 }
 

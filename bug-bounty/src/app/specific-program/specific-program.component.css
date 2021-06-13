@@ -91,7 +91,7 @@
   button:focus{
     background-color: #141d2b;
     border-color: #9fef00;
-    box-shadow: 0 0 15px #9fef00
+    box-shadow: 0 0 15px #9fef00;
   }
   
   table th {
@@ -103,5 +103,8 @@
 
 ::ng-deep .mat-dialog-container {
   background-color: #1a2332;
-  margin-top: 20px;
+  position: relative;
+  max-width:500px;
+  margin: 0px auto;
+  margin-top: 50px;
 }

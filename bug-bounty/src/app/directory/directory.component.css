@@ -86,3 +86,16 @@ table {
 thead tr td {
     color: #e19c05;
 }
+
+#visit{
+    max-width: 250px;
+    background-color: transparent;
+    border-color: #9fef00;
+    box-shadow: 0 0 2px #9fef00;
+    border-radius: 10px;
+}
+#visit:hover{
+    background-color: transparent;
+    border-color: #9fef00;
+    box-shadow: 0 0 10px #9fef00
+}

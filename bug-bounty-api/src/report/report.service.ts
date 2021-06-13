@@ -1,5 +1,7 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException, UnauthorizedException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { exception } from 'console';
+import { UserRoleEnum } from 'src/enums/user-role-enum';
 import { ProgramEntity } from 'src/program/entities/program.entity';
 import { Repository } from 'typeorm';
 import { SubmitReportDto } from './dto/submit-report.dto';
@@ -13,12 +15,28 @@ export class ReportService {
         @InjectRepository(ProgramEntity)
         private programRepository: Repository<ProgramEntity>
     ){} 
-    async submitReport(id,data: SubmitReportDto,user) : Promise<Partial<ReportEntity>>{
-        const newReport =  this.reportRepository.create(data);
-        newReport.hacker=user;
-        newReport.company=user;
-        const prog = this.programRepository.findOne(id);
-        console.log(prog);
-        return this.reportRepository.save(newReport);
+    async submitReport(programId,data: SubmitReportDto,user) : Promise<Partial<ReportEntity>>{
+        if(user.role === UserRoleEnum.COMPANY){
+            throw new UnauthorizedException("Only Hackers can sumbit reports");
+        }
+        if((user.role === UserRoleEnum.ADMIN)||(user.role === UserRoleEnum.HACKER)){
+            const prog = await this.programRepository.findOne(programId);
+            if(prog){
+                const newProg = this.programRepository.create(prog);
+                newProg.numberOfReports += 1;
+                await this.programRepository.save(newProg);
+                const newReport = this.reportRepository.create(data);
+                newReport.hacker=user;
+                newReport.company=user;
+                newReport.program = programId;
+                await this.reportRepository.save(newReport);
+                return {
+                    'asset' : newReport.asset
+                };
+            }
+            else {
+                throw new NotFoundException();
+            }
+        }
     }
 }

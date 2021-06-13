@@ -40,11 +40,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                <tr *ngFor="let program of programs" id="tRow">
-                    <td>Program 1</td>
-                    <td>25/05/2019</td>
-                    <td>19</td>
-                    <td>200$</td>
+                <tr *ngFor="let program of programs;" id="tRow">
+                    <td><a [routerLink]="['/program/'+program.id]">{{program.name}}</a></td>
+                    <td>{{program.createdAt | date:"MM/dd/YYYY"}} </td>
+                    <td>{{program.numberOfReports}}</td>
+                    <td>N/A</td>
+                    <td><button id="visit" [routerLink]="['/program/'+program.id]">Visit Program</button></td>
                 </tr>
             </tbody>
             </table>

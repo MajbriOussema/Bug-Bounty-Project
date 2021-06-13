@@ -16,4 +16,11 @@ export class NavbarComponent implements OnInit {
   logout(){
     this.lgService.logout();
   }
+  checkRole(exRole){
+    const activeRole = this.lgService.getRole();
+    if(activeRole===exRole){
+      return true;
+    }
+    return false;
+  }
 }

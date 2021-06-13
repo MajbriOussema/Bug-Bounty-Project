@@ -2,14 +2,14 @@
     <form #prog="ngForm" (ngSubmit)="updateProgram(prog,data.program_id)">
         <div  class="form-row">
             <div class="col">
-                <div class="form-group"><label style="color: #ffffff" for="program"><strong>Program Name</strong></label>
-                  <input required [(ngModel)] = "model.prog_name" #prog_name="ngModel" class="form-control" type="text" id="prog_name" placeholder="Program Name" name="name"></div>
+                <div class="form-group"><label style="color: #ffffff" for="name"><strong>Program Name</strong></label>
+                  <input required [(ngModel)] = "model.prog_name" #prog_name="ngModel" class="form-control" type="text" placeholder="Program Name" name="name"></div>
                 </div>
         </div>
         <div *ngIf="prog_name.errors && (prog_name.dirty || prog_name.touched)" style="color:#e19c05" class="ml-2 mb-3">
           Program name is required
       </div>
-        <div class="form-row">
+        <div class="form-row" style="overflow-x: hidden;">
             <div class="col">
                 <div class="form-group"><label style="color: #ffffff" for="policy"><strong>Policy</strong></label>
                   <textarea required #policy="ngModel" style="resize:none;" [(ngModel)] = "model.policy" class="form-control" id="policy" placeholder="Policy" name="policy" rows="5"></textarea>
@@ -21,14 +21,27 @@
         </div>
         <div class="form-row">
             <div class="col">
-                <div class="form-group"><label style="color: #ffffff" for="inscope"><strong>In Scope</strong></label>
-                  <div *ngFor="let f of inScopes;let i = index">
-                    <input [(ngModel)]="f.name" style="height:42px;width:400px;padding-right:0" type="text" placeholder="" name="inScope[{{i}}]">
+                <div class="form-group">
+                  <label style="color: #ffffff" for="inScope"><strong>In Scope</strong></label>
+                  <div *ngFor="let f of inScopes;let i = index" class="row" style="margin-bottom: 10px;">
+                    <div class="col-7">
+                      <input class="form-control" [(ngModel)]="f.inScope" placeholder="Domain" name="inScope[{{i}}]">
+                    </div>
+                    <div class="form-group col-3">
 
-                    <button type="button" class="btn btn-danger btn-sm" style="height:42px;margin-left: 0;width:30px" *ngIf="inScopes.length>1" (click)="deleteInScope(f)"><i class="fas fa-trash-alt"></i></button>
+                      <select class="form-control select" [(ngModel)]="f.severity" style="margin-left:10px"  name="severity[{{i}}]">
+                        <option value="low" selected>Low</option>
+                        <option value="medium" selected >Medium</option>
+                        <option value="high" >High</option>
+                        <option value="critical" >Critical</option>
+                      </select>
+                    </div>
 
+                    <button type="button" id="buttontrash" class="btn btn-danger btn-sm col-1 " *ngIf="inScopes.length>1" (click)="deleteInScope(f)"><i class="fas fa-trash-alt"></i></button>
                   </div>
-                  <button type="button" id="button1" class="btn btn-info btn-sm" style="height:42px;margin-top:10px" (click)="addInScopeField()">Add more In Scopes</button>
+                  <div class="col-7">
+                    <button type="button" id="button1" class="btn btn-info btn-sm" (click)="addInScopeField()">Add more In Scopes</button>
+                  </div>
 
                 </div>
             </div>
@@ -36,15 +49,22 @@
         <div class="form-row">
           <div class="col">
               <div class="form-group"><label style="color: #ffffff" for="outofscope"><strong>Out Of Scope</strong></label>
-                <div *ngFor="let f of outOfScopes;let i = index">
-                  <input [(ngModel)]="f.name" style="height:42px;width:400px;padding-right:0" type="text" placeholder="" name="outOfScope[{{i}}]">
-                  <button type="button" class="btn btn-danger btn-sm" style="height:42px;margin-left: 0;width:30px" *ngIf="outOfScopes.length>1" (click)="deleteOutOfScope(f)"><i class="fas fa-trash-alt"></i></button>
-                </div>
-                <button type="button" id="button1" class="btn btn-info btn-sm" style="height:42px;margin-top:10px" (click)="addOutOfScopeField()">Add more Out Of Scopes</button>
+                <div *ngFor="let f of outOfScopes;let i = index" class="row">
+                  <div class="col-7">
+                    <input  class="form-control" style="margin-bottom: 10px;" [(ngModel)]="f.outOfScope" type="text" placeholder="" name="outOfScope[{{i}}]">
+                  </div>
+                  <button type="button" id="buttontrash" class="btn btn-danger btn-sm col-1" style="margin-left: 10px" *ngIf="outOfScopes.length>1" (click)="deleteOutOfScope(f)"><i class="fas fa-trash-alt"></i></button>
 
+                </div>
+                <div class="col">
+                  <button type="button" id="button1" class="btn btn-info btn-sm" (click)="addOutOfScopeField()">Add more Out Of Scopes</button>
+                </div>
               </div>
           </div>
+      </div>
+
+        <div class="form-group col-3" style="margin: 0 auto;max-width: 300px;margin-bottom: 20px;">
+          <button class="btn btn-primary btn-sm form-control"   id="button2" [disabled]="prog.invalid" type="submit">Save Program</button>
         </div>
-        <div class="form-group"><button style="height:42px;margin-top:10px" class="btn btn-primary btn-sm form-control" id="button2" [disabled]="prog.invalid" type="submit">Save</button></div>
     </form>
 </div>
