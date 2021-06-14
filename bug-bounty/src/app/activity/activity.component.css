@@ -1,5 +1,5 @@
 #container {
-    max-width: 900px;
+    max-width: 700px;
     width: 100%;
     margin: 0 auto;
     margin-bottom: 50%;
@@ -19,48 +19,32 @@
       color:#fff;
   }
   
-  
   table {
+    width: 90%;
     margin: 0 auto;
-  }
-  table th {
+}
+#hacker{
     color:#e19c05;
-  }
-  table td {
-    color: #fff;
-  }
-  table td button {
-    background-color: transparent;
-    border: 0;
-  }
-  #ic{
-    color:#9fef00;
-    background-color: #1a2332;
-  }
-  table td button {
-    background-color: transparent;
-    border: 0;
-  }
-  #ic:hover {
-    box-shadow:0 0 30px #eff304;
-  }
-  ::ng-deep .mat-dialog-container {
-    background-color: #1a2332;
-  }
-  #button1{
-    background-color: #1a2332;
-    border: 1px solid #9fef00;
-  }
-  #button2{
-    background-color: rgb(89, 189, 235);
-    border: 4px rgb(89, 189, 235) solid;
-    box-shadow:6px 6px 4px rgb(132, 218, 240) inset ;
-  
-  }
-  #buttontrash{
-    background-color:transparent;
-    border:none;
-  }
-  #buttontrash:hover{
-    color:red;
-  }
+    text-decoration: none;
+}
+#program {
+    color:#e19c05;
+    text-decoration: none;
+}
+#hacker:hover{
+    text-shadow: 0 0 1px #e19c05;
+}
+#program:hover{
+    text-shadow: 0 0 1px #e19c05;
+}
+table {
+    text-align: center;
+}
+thead tr td {
+    color: #e19c05;
+}
+h2 {
+  text-align: center;
+  color : #e19c05;
+}
+ 

@@ -1,3 +1,4 @@
+import { ActivityEntity } from "src/activity/entities/activity.entity";
 import { UserRoleEnum } from "src/enums/user-role-enum";
 import { TimestampEntity } from "src/generics/timestamp.entities";
 import { ProgramEntity } from "src/program/entities/program.entity";
@@ -84,5 +85,22 @@ export class UserEntity extends TimestampEntity{
         }
     )
     reportsfortriager: ReportEntity[];
-    
+    @OneToMany(
+        type => ActivityEntity,
+        (activity) => activity.hacker,
+        {
+            cascade: true,
+            nullable: true,
+        }
+    )
+    hackerActivities: ActivityEntity[]; 
+    @OneToMany(
+        type => ActivityEntity,
+        (activity) => activity.company,
+        {
+            cascade: true,
+            nullable: true,
+        }
+    )
+    companyActivities: ActivityEntity[]; 
 }

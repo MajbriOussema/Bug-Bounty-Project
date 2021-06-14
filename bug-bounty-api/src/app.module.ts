@@ -9,6 +9,7 @@ import { AuthModule } from './auth/auth.module';
 import { ReportModule } from './report/report.module';
 import { HistoryModule } from './history/history.module';
 import { MulterModule } from '@nestjs/platform-express';
+import { ActivityModule } from './activity/activity.module';
 
 dotenv.config()
 @Module({
@@ -33,7 +34,8 @@ dotenv.config()
     ProgramModule,
     AuthModule,
     ReportModule,
-    HistoryModule
+    HistoryModule,
+    ActivityModule
   ],
   controllers: [AppController],
   providers: [AppService],
