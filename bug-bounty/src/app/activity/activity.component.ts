@@ -14,7 +14,9 @@ export class ActivityComponent implements OnInit {
   activities = [];
   ngOnInit(): void {
     this.activityService.getActivities().subscribe(
-      (response:any) => console.log(response),
+      (response:any) => {
+        this.activities = response;
+      },
       (error) => console.log(error)
     );
   }

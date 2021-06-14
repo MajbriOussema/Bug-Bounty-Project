@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ActivityService {
-  api_link = 'http://localhost:3000/api/report/activity';
+  api_link = 'http://localhost:3000/api/activity';
   constructor(
     private http: HttpClient
   ) { }
