@@ -1,0 +1,16 @@
+<div id="container">
+    <div id="headers" class="my-flex">
+        <div id="headers" class="my-flex">
+      <h2>Activity : {{infos.type}}</h2>
+    </div>
+    <div id="content">
+        <div class="row"><span id="tag">Program</span> &nbsp;&nbsp;: {{infos.programName}}</div>
+        <div class="row"><span id="tag">Company</span> &nbsp;&nbsp;: {{infos.companyName}}</div>
+        <div class="row"><span id="tag">Hacker</span> &nbsp;&nbsp;: {{infos.hackerName}}</div>
+        <div class="row"><span id="tag">Issued on</span> &nbsp;&nbsp;: {{infos.date | date: "DD/MM/YYYY"}}</div>
+        <hr style="background-color:#fff"/>
+        <div>
+            {{infos.details}}
+        </div>
+    </div>
+</div>

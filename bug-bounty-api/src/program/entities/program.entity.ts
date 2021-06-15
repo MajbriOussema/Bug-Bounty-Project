@@ -1,3 +1,4 @@
+import { ActivityEntity } from "src/activity/entities/activity.entity";
 import { UserEntity } from "src/auth/entities/user.entity";
 import { TimestampEntity } from "src/generics/timestamp.entities";
 import { ReportEntity } from "src/report/entities/report.entity";
@@ -47,4 +48,13 @@ export class ProgramEntity extends TimestampEntity{
         }
     )
     reports: ReportEntity[];
+    @OneToMany(
+        type => ActivityEntity,
+        (activity) => activity.program,
+        {
+            cascade: true,
+            nullable: true,
+        }
+    )
+    activities: ActivityEntity[];
 }

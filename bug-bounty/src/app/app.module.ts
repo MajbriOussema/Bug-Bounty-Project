@@ -29,6 +29,7 @@ import { HacktivityComponent } from './hacktivity/hacktivity.component';
 import { DirectoryComponent } from './directory/directory.component';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { ActivityComponent } from './activity/activity.component';
+import { SpecificActivityComponent } from './activity/specific-activity/specific-activity.component';
 
 
 @NgModule({
@@ -54,6 +55,7 @@ import { ActivityComponent } from './activity/activity.component';
     HacktivityComponent,
     DirectoryComponent,
     ActivityComponent,
+    SpecificActivityComponent,
     
   ],
   imports: [

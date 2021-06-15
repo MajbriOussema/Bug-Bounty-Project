@@ -1,0 +1,28 @@
+#container {
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 50%;
+    background-color: #1a2332;
+    padding: 0;
+    border-radius: 4px;
+    color: #505e6c;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
+    margin-top: 50px;
+    font-size: 18px;
+    color:#fff;
+    font-family: Montserrat;
+  }
+  .my-flex {
+    width:90%;
+    margin: 0 auto;
+  }
+h2{
+    font-family: Montserrat;
+    color:#e19c05;
+    text-align: center;
+    font-size: 25px;
+}
+#tag {
+    color:#e19c05;
+}

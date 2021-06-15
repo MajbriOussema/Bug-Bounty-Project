@@ -28,19 +28,18 @@ export class ReportService {
         if((user.role === UserRoleEnum.ADMIN)||(user.role === UserRoleEnum.HACKER)){
             const prog = await this.programRepository.findOne(programId);
             if(prog){
-                console.log(prog);
                 const id = prog.company.id;
                 prog.numberOfReports += 1;
                 const company = await this.userRepository.createQueryBuilder('user')
                 .where('user.id = :id',{id}).getOne();
                 await this.programRepository.save(prog);
-                console.log("company : "+company);
                 const newReport = this.reportRepository.create(data);
                 newReport.hacker=user;
                 newReport.company=company;
                 newReport.program = programId;
                 await this.reportRepository.save(newReport);
                 const act = {
+                    'program' : prog,
                     'details' : 'N/A',
                     'hacker' : user,
                     'company' : company,

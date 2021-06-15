@@ -14,7 +14,7 @@
       </div>
       <div class="col-9">
         <select required class="form-control select" name="asset" ngModel #asset="ngModel">
-          <option *ngFor="let inscope of program.inScope">{{inscope}}</option>
+          <option *ngFor="let inscope of program.inScope"  value="{{program.inScope}}">{{inscope}}</option>
         </select>
       </div>
     </div>

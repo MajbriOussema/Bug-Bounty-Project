@@ -1,4 +1,4 @@
-import { Controller, Get, UseGuards } from '@nestjs/common';
+import { Controller, Get, Param, UseGuards } from '@nestjs/common';
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 import { User } from 'src/decorators/user.decorator';
 import { ActivityService } from './activity.service';
@@ -12,9 +12,17 @@ export class ActivityController {
 
     @Get()
     @UseGuards(JwtAuthGuard)
-    getActivities(
+    async getActivities(
         @User() user
     ): Promise<ActivityEntity[]>{
-        return this.activityService.getActivities(user);
+        return await this.activityService.getActivities(user);
+    }
+    @Get(':id')
+    @UseGuards(JwtAuthGuard)
+    async getActivity(
+        @User() user,
+        @Param() params,
+    ): Promise<Partial<ActivityEntity>>{
+        return await this.activityService.getActivity(params.id,user);
     }
 }
