@@ -2,8 +2,17 @@
     <div class="row mb-3">
         <div class="col-lg-4">
             <div style="margin-top: 200px; background-color: #1a2332;" class="card mb-3">
-                <div class="card-body text-center shadow"><img class="rounded-circle mb-3 mt-4" src="assets/img/profile_image.png" style="width: 200px; height: 200px;" >
-                    <div class="mb-3"><button style="border: none;" class="btn btn-primary btn-sm" type="button">Change Photo</button></div>
+                <div class="card-body text-center shadow"><img class="rounded-circle mb-3 mt-4" src={{img_path}} style="width: 200px; height: 200px;" >
+                    <div class="mb-3">
+                      <label class="image-upload-container btn btn-bwm">
+                        <span>Select Image</span>
+                        <input #imageInput
+                               type="file"
+                               accept="image/*"
+                               (change)="handleImage($event.target.files)">
+                      </label>
+
+                    </div>
                 </div>
             </div>
         </div>

@@ -73,6 +73,7 @@ export class DialogSubmit{
   }
   handleFileInput(files: FileList){
     this.fileToUpload = files.item(0);
+    console.log(this.fileToUpload.name);
   }
   triggerError(){
     if(!!this.serverError){
