@@ -5,8 +5,8 @@
         <h1 style="color:#eff304">
           Submit Report
       </h1>
-      </div>  
-      
+      </div>
+
     </div>
     <div class="row" style="margin-bottom: 10px;">
       <div class="col" style="text-align: center;margin-top: 10px;">
@@ -14,8 +14,7 @@
       </div>
       <div class="col-9">
         <select required class="form-control select" name="asset" ngModel #asset="ngModel">
-          <option>AAAA</option>
-          <option>AAAAAA</option>
+          <option *ngFor="let inscope of program.inScope">{{inscope}}</option>
         </select>
       </div>
     </div>
@@ -27,8 +26,67 @@
         <label for="asset" style="color:#fff"><strong>Weakness</strong></label>
       </div>
       <div class="col-9">
-        <select required class="form-control select" name="weakness" ngModel #weakness="ngModel"> 
-          <option>BBBB</option>
+        <select required class="form-control select" name="weakness" ngModel #weakness="ngModel">
+          <option>Allowing Domains or Accounts to Expire</option>
+          <option>Buffer Overflow</option>
+          <option>Business logic vulnerability</option>
+          <option>CRLF Injection</option>
+          <option>CSV Injection by Timo Goosen, Albinowax</option>
+          <option>Catch NullPointerException</option>
+          <option>Covert storage channel</option>
+          <option>Deserialization of untrusted data</option>
+          <option>Directory Restriction Error</option>
+          <option>Doubly freeing memory</option>
+          <option>Empty String Password</option>
+          <option>Expression Language Injection</option>
+          <option>Full Trust CLR Verification issue Exploiting Passing Reference Types by Reference</option>
+          <option>Heartbleed Bug</option>
+          <option>Improper Data Validation</option>
+          <option>Improper pointer subtraction</option>
+          <option>Information exposure through query strings in url by Robert Gilbert (amroot)</option>
+          <option>Injection problem</option>
+          <option>Insecure Compiler Optimization</option>
+          <option>Insecure Randomness</option>
+          <option>Insecure Temporary File</option>
+          <option>Insecure Third Party Domain Access</option>
+          <option>Insecure Transport</option>
+          <option>Insufficient Entropy</option>
+          <option>Insufficient Session-ID Length</option>
+          <option>Least Privilege Violation</option>
+          <option>Memory leak</option>
+          <option>Missing Error Handling</option>
+          <option>Missing XML Validation</option>
+          <option>Multiple admin levels</option>
+          <option>Null Dereference</option>
+          <option>OWASP .NET Vulnerability Research</option>
+          <option>Overly Permissive Regular Expression</option>
+          <option>PHP File Inclusion</option>
+          <option>PHP Object Injection by Egidio Romano</option>
+          <option>PRNG Seed Error</option>
+          <option>Password Management Hardcoded Password</option>
+          <option>Password Plaintext Storage</option>
+          <option>Poor Logging Practice</option>
+          <option>Portability Flaw</option>
+          <option>Privacy Violation</option>
+          <option>Process Control</option>
+          <option>Return Inside Finally Block</option>
+          <option>Session Variable Overloading</option>
+          <option>String Termination Error</option>
+          <option>Unchecked Error Condition</option>
+          <option>Unchecked Return Value Missing Check against Null</option>
+          <option>Undefined Behavior</option>
+          <option>Unreleased Resource</option>
+          <option>Unrestricted File Upload</option>
+          <option>Unsafe JNI</option>
+          <option>Unsafe Mobile Code</option>
+          <option>Unsafe function call from a signal handler</option>
+          <option>Unsafe use of Reflection</option>
+          <option>Use of Obsolete Methods</option>
+          <option>Use of hard-coded password</option>
+          <option>Using a broken or risky cryptographic algorithm</option>
+          <option>Using freed memory</option>
+          <option>Vulnerability template</option>
+          <option>XML External Entity (XXE) Processing</option>
         </select>
       </div>
     </div>
@@ -41,7 +99,10 @@
       </div>
       <div class="col-9">
         <select required class="form-control select" name="severity" ngModel #severity="ngModel">
-          <option>CCC</option>
+          <option>Low</option>
+          <option selected>Meduim</option>
+          <option>High</option>
+          <option>Critical</option>
         </select>
       </div>
     </div>
@@ -70,6 +131,6 @@
         <button class="form-control" [disabled]="reportForm.invalid">Submit</button>
       </div>
     </div>
-    
+
   </form>
 </div>

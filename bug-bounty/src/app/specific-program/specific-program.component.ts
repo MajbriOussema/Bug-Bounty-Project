@@ -25,7 +25,6 @@ export class SpecificProgramComponent implements OnInit {
     )
     this.SpecificProgramService.getProgramInfo().subscribe(
       (response:any)=>{
-        console.log(response)
         this.program = response;
       },
       (error:any)=>{
@@ -58,7 +57,17 @@ export class DialogSubmit{
     public dialogRef: MatDialogRef<DialogSubmit>,
     private specificProgramService: SpecificProgramService,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
-
+  program : any;
+  ngOnInit() : void {
+    this.specificProgramService.getProgramInfo().subscribe(
+      (response) => {
+        this.program = response;
+      },
+    (error) => {
+        console.log("error");
+    }
+    );
+  }
   onNoClick(): void {
     this.dialogRef.close();
   }
