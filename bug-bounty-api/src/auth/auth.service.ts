@@ -90,4 +90,12 @@ export class AuthService {
             'username': user.username
         }
     }
+    async getUserInfo(user){
+        return {
+            'username': user.username,
+            'firstname' : user.firstname,
+            'lastname' : user.lastname,
+            'email' : user.email
+        }
+    }
 }

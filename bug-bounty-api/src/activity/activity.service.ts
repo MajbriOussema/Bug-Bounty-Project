@@ -35,11 +35,15 @@ export class ActivityService {
         const act = await this.activityRepository.findOne(id);
         const res = {
             'type' : act.type,
-            'programName' : act.program.name,
+            'programName' : act.report.program.name,
             'hackerName' : act.hacker.username,
             'companyName' : act.company.company,
             'date' : act.createdAt,
-            'details' : act.details
+            'details' : act.details,
+            'weakness' : act.report.weakness,
+            'asset' : act.report.asset,
+            'severity' : act.report.severity,
+            'status' : act.report.status
         };
         return res;
     }

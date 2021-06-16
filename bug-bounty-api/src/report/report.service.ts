@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException, UnauthorizedException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { exception } from 'console';
+import { createReadStream } from 'fs';
 import { ActivityEntity } from 'src/activity/entities/activity.entity';
 import { UserEntity } from 'src/auth/entities/user.entity';
 import { UserRoleEnum } from 'src/enums/user-role-enum';
@@ -43,9 +43,10 @@ export class ReportService {
                     'details' : 'N/A',
                     'hacker' : user,
                     'company' : company,
-                    'type' : 'report submit'
+                    'type' : 'report submit',
                 };
                 const newActivity = this.activityRepository.create(act);
+                newActivity.report = newReport;
                 await this.activityRepository.save(newActivity);
                 console.log(newActivity);
                 return {
@@ -57,5 +58,27 @@ export class ReportService {
             }
         }
     }
-    
+    async downloadPdf(activityId,user){
+        const act = await this.activityRepository.findOne(activityId);
+        return createReadStream(act.report.reportFilePath,{
+            encoding: "utf8",
+        });
+    }
+    async validate(data,user){
+        const act = await this.activityRepository.findOne(data.id);
+        const rep = await this.reportRepository.findOne(act.report.id);
+        rep.status = "validated";
+        await this.reportRepository.save(rep);
+        const newAct = {
+            'details' : 'N/A',
+            'hacker' : act.hacker,
+            'company' : act.company,
+            'type' : 'report validation',
+            'report' : rep
+        };
+        await this.activityRepository.save(newAct);
+        return {
+            'validated' : true
+        };
+    }
 }

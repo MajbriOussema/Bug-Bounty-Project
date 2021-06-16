@@ -15,7 +15,6 @@ import { ErrorComponent } from "./error/error.component";
 import { LoginGuard } from "./guards/login.guard";
 import { LogoutGuard } from "./guards/logout.guard";
 import { RoleGuard } from "./guards/role.guard";
-import { HacktivityComponent } from "./hacktivity/hacktivity.component";
 import { HomeComponent } from "./home/home.component";
 import { ProfileComponent } from "./profile/profile.component";
 import { SpecificProgramComponent } from "./specific-program/specific-program.component";
@@ -24,7 +23,6 @@ import { SupportComponent } from "./support/support.component";
 const APP_ROUTES : Routes = [
     {path: '', component: HomeComponent},
     {path: 'directory',component: DirectoryComponent},
-    {path: 'hacktivity',component: HacktivityComponent},
     {path: 'login', component: LoginComponent, canActivate: [LogoutGuard]},
     {path: 'dashboard',component: DashboardComponent, canActivate: [LoginGuard]},
     {path: 'error', component: ErrorComponent},

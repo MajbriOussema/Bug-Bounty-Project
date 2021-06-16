@@ -48,13 +48,5 @@ export class ProgramEntity extends TimestampEntity{
         }
     )
     reports: ReportEntity[];
-    @OneToMany(
-        type => ActivityEntity,
-        (activity) => activity.program,
-        {
-            cascade: true,
-            nullable: true,
-        }
-    )
-    activities: ActivityEntity[];
+    
 }

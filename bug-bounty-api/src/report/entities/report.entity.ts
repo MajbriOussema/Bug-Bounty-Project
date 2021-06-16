@@ -1,3 +1,4 @@
+import { ActivityEntity } from "src/activity/entities/activity.entity";
 import { UserEntity } from "src/auth/entities/user.entity";
 import { ReportStatusEnum } from "src/enums/report-status-enum";
 import { TimestampEntity } from "src/generics/timestamp.entities";
@@ -39,7 +40,7 @@ export class ReportEntity extends TimestampEntity{
         default:null
     })
     reportFilePath: string;
-
+    
     @ManyToOne(
         type => UserEntity,
         (hacker) => hacker.reportsforhacker,
@@ -83,4 +84,13 @@ export class ReportEntity extends TimestampEntity{
         }
     )
    program: ProgramEntity;
+    @OneToMany(
+        type => ActivityEntity,
+        (activity) => activity.report,
+        {
+            cascade: true,
+            nullable: true,
+        }
+    )
+   activities: ActivityEntity[];
 }

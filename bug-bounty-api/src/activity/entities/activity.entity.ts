@@ -1,6 +1,7 @@
 import { UserEntity } from "src/auth/entities/user.entity";
 import { TimestampEntity } from "src/generics/timestamp.entities";
 import { ProgramEntity } from "src/program/entities/program.entity";
+import { ReportEntity } from "src/report/entities/report.entity";
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity('activity')
@@ -28,15 +29,16 @@ export class ActivityEntity extends TimestampEntity{
     )
     company: UserEntity;
     @ManyToOne(
-        type => ProgramEntity,
-        (program) => program.activities,
+        type => ReportEntity,
+        (report) => report.activities,
         {
             cascade: ['insert','update'],
             nullable: true,
             eager: true
         },
     )
-    program: ProgramEntity;
+    report: ReportEntity;
+    
     @Column({   
         default:null
     })

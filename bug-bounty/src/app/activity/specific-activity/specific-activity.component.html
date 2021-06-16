@@ -7,10 +7,31 @@
         <div class="row"><span id="tag">Program</span> &nbsp;&nbsp;: {{infos.programName}}</div>
         <div class="row"><span id="tag">Company</span> &nbsp;&nbsp;: {{infos.companyName}}</div>
         <div class="row"><span id="tag">Hacker</span> &nbsp;&nbsp;: {{infos.hackerName}}</div>
-        <div class="row"><span id="tag">Issued on</span> &nbsp;&nbsp;: {{infos.date | date: "DD/MM/YYYY"}}</div>
-        <hr style="background-color:#fff"/>
-        <div>
-            {{infos.details}}
+        <div class="row"><span id="tag">Issued on</span> &nbsp;&nbsp;: {{infos.date | date: "short"}}</div>
+        <div class="row"><span id="tag">Status</span> &nbsp;&nbsp;: <u>{{infos.status}}</u></div>
+        <hr style="background-color:rgb(202, 183, 183)"/>
+        <div class="col">
+            <div>Asset : {{infos.asset}}</div>
+            <div>Weakness : {{infos.weakness}}</div>
+            <div>Severity : {{infos.severity}}</div>
+        </div>
+        <div class="col-4 mt-2">
+            <table class="table table-hover ">
+   
+                <tbody>
+                    <tr>
+                        <td>
+                            <button id="download" type="button" (click)="downloadReport()">Download Report</button>
+                        </td>
+                        <td *ngIf="checkValidate()">
+                            <button id="download" type="button" (click)="validateReport()">Validate Report</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div *ngIf="!!valid">
+            <h3 style="color:green;text-align: center;">Report validated successfully</h3>
         </div>
     </div>
 </div>

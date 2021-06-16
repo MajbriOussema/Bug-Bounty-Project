@@ -26,3 +26,16 @@ h2{
 #tag {
     color:#e19c05;
 }
+#download{
+  max-width: 250px;
+  background-color: transparent;
+  border-color: #9fef00;
+  box-shadow: 0 0 2px #9fef00;
+  border-radius: 10px;
+  color:#fff;
+}
+#download:hover{
+  background-color: transparent;
+  border-color: #9fef00;
+  box-shadow: 0 0 10px #9fef00
+}
